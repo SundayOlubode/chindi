@@ -64,7 +64,9 @@ class TaskMenu extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             _buildTaskCategoryContext('Laundry Pickup'),
+            const SizedBox(height: 12),
             _buildTaskCategoryContext('Supermarket'),
+            const SizedBox(height: 12),
             _buildTaskCategoryContext('Document Delivery'),
           ],
         ),
@@ -75,7 +77,9 @@ class TaskMenu extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             _buildTaskCategoryContext('Grocery Shopping'),
+            const SizedBox(height: 12),
             _buildTaskCategoryContext('Package Delivery'),
+            const SizedBox(height: 12),
             _buildTaskCategoryContext('Water Pickup'),
           ],
         ),
@@ -85,13 +89,19 @@ class TaskMenu extends StatelessWidget {
 
   Widget _buildTaskCategoryContext(String text) {
     return Container(
+      padding: const EdgeInsets.all(10),
       height: 100,
       width: 100,
       color: Color(color2),
-      child: Text(
-        text,
-        style: const TextStyle(color: Colors.white),
-        textAlign: TextAlign.center,
+      child: Center(
+        child: Text(
+          text,
+          style: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+          textAlign: TextAlign.center,
+        ),
       ),
     );
   }
