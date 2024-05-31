@@ -15,6 +15,7 @@ class TaskMenu extends StatelessWidget {
             ),
             _buildSearchBar(context),
             _buildTaskCategories(context),
+            _buildFooter(context),
           ],
         ),
       ),
@@ -75,6 +76,29 @@ class TaskMenu extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  Widget _buildFooter(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        _buildIcon(Icons.home, 'Home'),
+        _buildIcon(Icons.list_alt_outlined, 'List Job'),
+        _buildIcon(Icons.account_circle_rounded, 'Profile'),
+      ],
+    );
+  }
+
+  Widget _buildIcon(IconData icon, String text) {
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: Column(
+        children: <Widget>[
+          Icon(icon, size: 40),
+          Text(text),
+        ],
+      ),
     );
   }
 }
