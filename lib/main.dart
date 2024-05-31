@@ -68,7 +68,7 @@ class HomePage extends StatelessWidget {
                                  Container(
                                    padding: const EdgeInsets.all(10),
                                    decoration: BoxDecoration(
-                                     border: Border(bottom: BorderSide(color: Colors.grey[200]))
+                                     border: Border(bottom: BorderSide(color: Colors.grey[200] ?? Colors.orange))
                                    ),
                                    child: const TextField(
                                      decoration: InputDecoration(
@@ -81,7 +81,7 @@ class HomePage extends StatelessWidget {
                                  Container(
                                    padding: const EdgeInsets.all(10),
                                    decoration: BoxDecoration(
-                                       border: Border(bottom: BorderSide(color: Colors.grey[200]))
+                                       border: Border(bottom: BorderSide(color: Colors.grey[200] ?? Colors.orange))
                                    ),
                                    child: const TextField(
                                      decoration: InputDecoration(
