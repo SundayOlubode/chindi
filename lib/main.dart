@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.symmetric(vertical: 30),
+        padding: const EdgeInsets.symmetric(vertical: 30),
         width: double.infinity,
         decoration: BoxDecoration(
            gradient: LinearGradient(
@@ -52,88 +52,90 @@ class HomePage extends StatelessWidget {
                    padding: const EdgeInsets.all(30),
                    child: Column(
                      children: <Widget>[
-                       const SizedBox(height: 60,),
-                       Container(
-                         decoration: BoxDecoration(
-                           color: Colors.white,
-                           borderRadius: BorderRadius.circular(10),
-                           boxShadow: const [BoxShadow(
-                             color: Color.fromRGBO(225, 95, 27, .3),
-                             blurRadius: 20,
-                             offset: Offset(0,10)
-                           )]
-                         ),
-                         child: Column(
-                           children: <Widget>[
-                             Container(
-                               padding: const EdgeInsets.all(10),
-                               decoration: BoxDecoration(
-                                 border: Border(bottom: BorderSide(color: Colors.grey[200]))
-                               ),
-                               child: const TextField(
-                                 decoration: InputDecoration(
-                                   hintText: "Email or Phone number",
-                                   hintStyle: TextStyle(color: Colors.grey),
-                                   border: InputBorder.none
-                                 ),
-                               ),
+                           const SizedBox(height: 60,),
+                           Container(
+                             decoration: BoxDecoration(
+                               color: Colors.white,
+                               borderRadius: BorderRadius.circular(10),
+                               boxShadow: const [BoxShadow(
+                                 color: Color.fromRGBO(225, 95, 27, .3),
+                                 blurRadius: 20,
+                                 offset: Offset(0,10)
+                               )]
                              ),
-                             Container(
-                               padding: EdgeInsets.all(10),
-                               decoration: BoxDecoration(
-                                   border: Border(bottom: BorderSide(color: Colors.grey[200]))
-                               ),
-                               child: const TextField(
-                                 decoration: InputDecoration(
-                                     hintText: "Password",
-                                     hintStyle: TextStyle(color: Colors.grey),
-                                     border: InputBorder.none
+                             child: Column(
+                               children: <Widget>[
+                                 Container(
+                                   padding: const EdgeInsets.all(10),
+                                   decoration: BoxDecoration(
+                                     border: Border(bottom: BorderSide(color: Colors.grey[200]))
+                                   ),
+                                   child: const TextField(
+                                     decoration: InputDecoration(
+                                       hintText: "Email or Phone number",
+                                       hintStyle: TextStyle(color: Colors.grey),
+                                       border: InputBorder.none
+                                     ),
+                                   ),
                                  ),
-                               ),
-                             ),
-                           ],
-                         ),
-                       ),
-                       const SizedBox(height: 40,),
-                       const Text("Forgot Password?", style: TextStyle(color: Colors.grey),),
-                       const SizedBox(height: 40,),
-                       Container(
-                         height: 50,
-                         margin: EdgeInsets.symmetric(horizontal: 50),
-                         decoration: BoxDecoration(
-                           borderRadius: BorderRadius.circular(50),
-                           color: Colors.orange[900]
-                         ),
-                         child: const Center(
-                           child: Text("Login", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
-                         ),
-                       ),
-                       const SizedBox(height: 50,),
-                       Row(
-                         children: <Widget>[
-                           Expanded(
-                             child: Container(
-                               height: 50,
-                               decoration: BoxDecoration(
-                                 borderRadius: BorderRadius.circular(50),
-                                  color: Colors.blue
-                               ),
+                                 Container(
+                                   padding: const EdgeInsets.all(10),
+                                   decoration: BoxDecoration(
+                                       border: Border(bottom: BorderSide(color: Colors.grey[200]))
+                                   ),
+                                   child: const TextField(
+                                     decoration: InputDecoration(
+                                         hintText: "Password",
+                                         hintStyle: TextStyle(color: Colors.grey),
+                                         border: InputBorder.none
+                                     ),
+                                   ),
+                                 ),
+                               ],
                              ),
                            ),
+                           const SizedBox(height: 40,),
+                           const Text("Forgot Password?", style: TextStyle(color: Colors.grey),),
+                           const SizedBox(height: 40,),
                            Container(
                              height: 50,
+                             margin: const EdgeInsets.symmetric(horizontal: 50),
                              decoration: BoxDecoration(
-                                 borderRadius: BorderRadius.circular(50),
-                                 color: Colors.black
+                               borderRadius: BorderRadius.circular(50),
+                               color: Colors.orange[900]
                              ),
+                             child: const Center(
+                               child: Text("Login", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                             ),
+                           ),
+                           const SizedBox(height: 50,),
+                           Row(
+                             children: <Widget>[
+                               Expanded(
+                                 child: Container(
+                                   height: 50,
+                                   decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(50),
+                                      color: Colors.blue
+                                   ),
+                                 ),
+                               ),
+                               Container(
+                                 height: 50,
+                                 decoration: BoxDecoration(
+                                     borderRadius: BorderRadius.circular(50),
+                                     color: Colors.black
+                                 ),
+                               )
+                             ],
                            )
-                         ],
-                       )
-                 ),
+                     ],
+                   ),
                  )
                ),
            )
          ],
+
        )
      ),
     );
