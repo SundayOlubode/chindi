@@ -4,7 +4,7 @@ class TaskMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(255, 193, 68, 0),
+      // backgroundColor: Color.fromARGB(0, 233, 174, 55),
       body: Padding(
         padding: const EdgeInsets.all((10)),
         child: Column(
@@ -14,6 +14,7 @@ class TaskMenu extends StatelessWidget {
               height: 30.0,
             ),
             _buildSearchBar(context),
+            _buildTaskCategories(context),
           ],
         ),
       ),
@@ -31,6 +32,47 @@ class TaskMenu extends StatelessWidget {
         IconButton(
           onPressed: () => {},
           icon: const Icon(Icons.mic),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildTaskCategories(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        _buildTaskColumn(context),
+        Expanded(
+          child: Container(),
+        ),
+        _buildTaskColumn(context),
+      ],
+    );
+  }
+
+  Widget _buildTaskColumn(BuildContext context) {
+    return const Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        SizedBox(
+          height: 100,
+          width: 100,
+          child: Text(
+            'Grocery Shopping',
+          ),
+        ),
+        SizedBox(
+          height: 100,
+          width: 100,
+          child: Text(
+            'Grocery Shopping',
+          ),
+        ),
+        SizedBox(
+          height: 100,
+          width: 100,
+          child: Text(
+            'Grocery Shopping',
+          ),
         ),
       ],
     );
