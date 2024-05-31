@@ -1,3 +1,4 @@
+import 'package:chindi_ky/routes/task_menu.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,6 +10,8 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return MaterialApp(
+      home: TaskMenu(),
+    );
   }
 }
