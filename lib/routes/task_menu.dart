@@ -1,20 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class TaskMenu extends StatelessWidget {
+  final int color1 = int.parse('0xffFFC244');
+  final int color2 = int.parse('0xff00A082');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Color.fromARGB(0, 233, 174, 55),
+      backgroundColor: Color(color1),
       body: Padding(
-        padding: const EdgeInsets.all((10)),
+        padding: const EdgeInsets.all((30)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             const SizedBox(
               height: 30.0,
             ),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                Icon(Icons.menu, size: 60),
+              ],
+            ),
+            Expanded(
+              child: Container(),
+            ),
             _buildSearchBar(context),
+            Expanded(
+              child: Container(),
+            ),
             _buildTaskCategories(context),
+            Expanded(
+              child: Container(),
+            ),
             _buildFooter(context),
           ],
         ),
@@ -41,41 +60,39 @@ class TaskMenu extends StatelessWidget {
   Widget _buildTaskCategories(BuildContext context) {
     return Row(
       children: <Widget>[
-        _buildTaskColumn(context),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            _buildTaskCategoryContext('Laundry Pickup'),
+            _buildTaskCategoryContext('Supermarket'),
+            _buildTaskCategoryContext('Document Delivery'),
+          ],
+        ),
         Expanded(
           child: Container(),
         ),
-        _buildTaskColumn(context),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            _buildTaskCategoryContext('Grocery Shopping'),
+            _buildTaskCategoryContext('Package Delivery'),
+            _buildTaskCategoryContext('Water Pickup'),
+          ],
+        ),
       ],
     );
   }
 
-  Widget _buildTaskColumn(BuildContext context) {
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        SizedBox(
-          height: 100,
-          width: 100,
-          child: Text(
-            'Grocery Shopping',
-          ),
-        ),
-        SizedBox(
-          height: 100,
-          width: 100,
-          child: Text(
-            'Grocery Shopping',
-          ),
-        ),
-        SizedBox(
-          height: 100,
-          width: 100,
-          child: Text(
-            'Grocery Shopping',
-          ),
-        ),
-      ],
+  Widget _buildTaskCategoryContext(String text) {
+    return Container(
+      height: 100,
+      width: 100,
+      color: Color(color2),
+      child: Text(
+        text,
+        style: const TextStyle(color: Colors.white),
+        textAlign: TextAlign.center,
+      ),
     );
   }
 
@@ -83,8 +100,17 @@ class TaskMenu extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        _buildIcon(Icons.home, 'Home'),
+        _buildIcon(
+          Icons.home,
+          'Home',
+        ),
+        Expanded(
+          child: Container(),
+        ),
         _buildIcon(Icons.list_alt_outlined, 'List Job'),
+        Expanded(
+          child: Container(),
+        ),
         _buildIcon(Icons.account_circle_rounded, 'Profile'),
       ],
     );
@@ -95,7 +121,7 @@ class TaskMenu extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       child: Column(
         children: <Widget>[
-          Icon(icon, size: 40),
+          Icon(icon, size: 40, color: Color(color2)),
           Text(text),
         ],
       ),
