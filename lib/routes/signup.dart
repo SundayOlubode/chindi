@@ -15,8 +15,15 @@ class SignUpScreen extends StatelessWidget {
             children: <Widget>[
               /// IMAGE
               const Center(
-                child: Image(
-                  image: AssetImage('assets/images/logo.png'),
+                child: SizedBox(
+                  width: 150,
+                  height: 150,
+                  child: ClipOval(
+                    child: Image(
+                      image: AssetImage('assets/images/logo.png'),
+                      fit: BoxFit.fitWidth,
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(width: 16.0, height: 30.0),
@@ -26,10 +33,10 @@ class SignUpScreen extends StatelessWidget {
                 'Let\'s create your account',
                 style: Theme.of(context).textTheme.titleMedium,
               ),
-              const SizedBox(width: 16.0, height: 30.0),
+              const SizedBox(height: 20.0),
 
               /// FORM
-              buildFormWidget(context)
+              _buildFormWidget(context)
             ],
           ),
         ),
@@ -37,7 +44,7 @@ class SignUpScreen extends StatelessWidget {
     );
   }
 
-  Form buildFormWidget(BuildContext context) {
+  Form _buildFormWidget(BuildContext context) {
     return Form(
       child: Column(
         children: <Widget>[
@@ -68,15 +75,19 @@ class SignUpScreen extends StatelessWidget {
                 ElevatedButton(onPressed: () {}, child: const Text('Sign Up')),
           ),
           const SizedBox(width: 16.0, height: 30.0),
-          Text.rich(TextSpan(children: [
-            const TextSpan(text: 'Already have an account? '),
+          Text.rich(
             TextSpan(
-                text: 'Log in',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyLarge
-                    ?.copyWith(color: Color(int.parse('0xff381C72'))))
-          ]))
+              children: [
+                const TextSpan(text: 'Already have an account? '),
+                TextSpan(
+                    text: 'Log in',
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyLarge
+                        ?.copyWith(color: Color(int.parse('0xff381C72'))))
+              ],
+            ),
+          ),
         ],
       ),
     );

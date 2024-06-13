@@ -13,15 +13,24 @@ class ResetPasswordScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+              /// IMAGE
               const Center(
-                child: Image(
-                  image: AssetImage('assets/images/logo.png'),
+                child: SizedBox(
+                  width: 150,
+                  height: 150,
+                  child: ClipOval(
+                    child: Image(
+                      image: AssetImage('assets/images/logo.png'),
+                      fit: BoxFit.fitWidth,
+                    ),
+                  ),
                 ),
               ),
+              const SizedBox(width: 16.0, height: 30.0),
 
               /// FORM TITLE TEXT
               Text('Reset Password',
-                  style: Theme.of(context).textTheme.titleLarge),
+                  style: Theme.of(context).textTheme.titleMedium),
               const SizedBox(height: 20.0),
 
               /// FORM

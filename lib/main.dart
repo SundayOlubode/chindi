@@ -32,7 +32,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Chindi',
       theme: _theme,
-      home: SignUpScreen(),
+      home: ResetPasswordScreen(),
     );
   }
 }
