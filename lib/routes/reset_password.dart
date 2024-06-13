@@ -21,7 +21,7 @@ class ResetPasswordScreen extends StatelessWidget {
 
               /// FORM TITLE TEXT
               Text('Reset Password',
-                  style: Theme.of(context).textTheme.titleMedium),
+                  style: Theme.of(context).textTheme.titleLarge),
               const SizedBox(height: 20.0),
 
               /// FORM
@@ -34,7 +34,10 @@ class ResetPasswordScreen extends StatelessWidget {
                     _buildTextFormField('Confirm Password', Icons.lock_sharp),
                     const SizedBox(height: 16.0),
                     Text('Password does not match',
-                        style: Theme.of(context).textTheme.bodyMedium),
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyMedium
+                            ?.copyWith(color: Colors.red)),
                     const SizedBox(height: 25.0),
 
                     /// Button

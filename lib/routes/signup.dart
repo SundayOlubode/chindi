@@ -53,11 +53,11 @@ class SignUpScreen extends StatelessWidget {
             ],
           ),
           const SizedBox(width: 16.0, height: 20.0),
-          _buildTextFormField('Email', Icons.person_outline_sharp),
+          _buildTextFormField('Email', Icons.email),
           const SizedBox(width: 16.0, height: 20.0),
-          _buildTextFormField('Password', Icons.person_outline_sharp),
+          _buildTextFormField('Password', Icons.lock_sharp),
           const SizedBox(width: 16.0, height: 20.0),
-          _buildTextFormField('Confirm Password', Icons.person_outline_sharp),
+          _buildTextFormField('Confirm Password', Icons.lock_sharp),
 
           const SizedBox(width: 16.0, height: 30.0),
 
@@ -71,7 +71,11 @@ class SignUpScreen extends StatelessWidget {
           Text.rich(TextSpan(children: [
             const TextSpan(text: 'Already have an account? '),
             TextSpan(
-                text: 'Log in', style: Theme.of(context).textTheme.bodyLarge)
+                text: 'Log in',
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyLarge
+                    ?.copyWith(color: Color(int.parse('0xff381C72'))))
           ]))
         ],
       ),
