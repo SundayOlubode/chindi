@@ -1,5 +1,4 @@
-import 'package:chindi_ke/routes/task_home.dart';
-import 'package:chindi_ke/routes/task_menu.dart';
+import 'package:chindi_ke/routes/login.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -29,7 +28,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Chindi',
       theme: _theme,
-      home: const TaskHome(),
+      home: const HomePage(),
     );
   }
 }
