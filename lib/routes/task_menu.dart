@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class TaskMenu extends StatelessWidget {
   final int color1 = int.parse('0xffFFC244');
   final int color2 = int.parse('0xff00A082');
+
+  TaskMenu({super.key});
 
   @override
   Widget build(BuildContext context) {

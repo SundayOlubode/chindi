@@ -1,9 +1,8 @@
-import 'package:chindi_ky/routes/login.dart';
-import 'package:chindi_ky/routes/reset_password.dart';
-import 'package:chindi_ky/routes/signup.dart';
-import 'package:chindi_ky/routes/task_home.dart';
-import 'package:chindi_ky/routes/task_menu.dart';
+import 'package:chindi_ke/routes/task_home.dart';
+import 'package:chindi_ke/routes/task_menu.dart';
 import 'package:flutter/material.dart';
+
+import 'routes/reset_password.dart';
 
 void main() {
   runApp(App());
