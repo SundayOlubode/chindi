@@ -1,3 +1,4 @@
+import '../common/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -14,18 +15,7 @@ class SignUpScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               /// IMAGE
-              const Center(
-                child: SizedBox(
-                  width: 150,
-                  height: 150,
-                  child: ClipOval(
-                    child: Image(
-                      image: AssetImage('assets/images/logo.png'),
-                      fit: BoxFit.fitWidth,
-                    ),
-                  ),
-                ),
-              ),
+              const Center(child: ChindiIcon()),
               const SizedBox(width: 16.0, height: 30.0),
 
               /// TITLE IMAGE
