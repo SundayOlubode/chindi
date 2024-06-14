@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:chindi_ke/models/todo_item.dart';
 
 class TodoList extends StatefulWidget {
-  void Function()? onTodoListComplete;
+  final void Function()? onTodoListComplete;
 
-  TodoList({super.key, this.onTodoListComplete});
+  const TodoList({super.key, this.onTodoListComplete});
 
   @override
   State<TodoList> createState() => _TodoListState();
