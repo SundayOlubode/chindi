@@ -1,4 +1,4 @@
-import 'package:chindi_ke/routes/login.dart';
+import 'package:chindi_ke/routes/auth/login.dart';
 import 'package:flutter/material.dart';
 
 void main() {
