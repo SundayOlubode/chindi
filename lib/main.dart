@@ -1,3 +1,4 @@
+import 'routes/signup.dart';
 import 'package:chindi_ke/routes/task_home.dart';
 import 'package:chindi_ke/routes/task_menu.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Chindi',
       theme: _theme,
-      home: ResetPasswordScreen(),
+      home: SignUpScreen(),
     );
   }
 }
