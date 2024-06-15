@@ -1,5 +1,7 @@
+import 'package:chindi_ke/routes/auth/forgot_password.dart';
 import 'package:chindi_ke/routes/auth/login.dart';
 import 'package:chindi_ke/routes/auth/reset_password.dart';
+import 'package:chindi_ke/routes/auth/signin.dart';
 import 'package:chindi_ke/routes/auth/signup.dart';
 import 'package:chindi_ke/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +35,7 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: ChindiAppTheme.lightTheme,
       darkTheme: ChindiAppTheme.darkTheme,
-      home: const ResetPasswordScreen(),
+      home: const SignInScreen(),
     );
   }
 }
