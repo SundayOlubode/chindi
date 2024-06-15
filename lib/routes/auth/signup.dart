@@ -1,5 +1,9 @@
-import '../common/widgets/widgets.dart';
+import 'package:chindi_ke/utils/constants/colors.dart';
+import 'package:chindi_ke/utils/constants/sizes.dart';
+import 'package:chindi_ke/utils/constants/texts.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
+import '../../common/widgets/widgets.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -10,20 +14,31 @@ class SignUpScreen extends StatelessWidget {
       appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsets.all(ChindiSizes.defaultSpace),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               /// IMAGE
-              const Center(child: ChindiIcon()),
-              const SizedBox(width: 16.0, height: 30.0),
+              const Center(
+                child: SizedBox(
+                  width: 150,
+                  height: 150,
+                  child: ClipOval(
+                    child: Image(
+                      image: AssetImage('assets/images/logo.png'),
+                      fit: BoxFit.fitWidth,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: ChindiSizes.spaceBtwItems),
 
               /// TITLE IMAGE
               Text(
-                'Let\'s create your account',
-                style: Theme.of(context).textTheme.titleMedium,
+                ChindiTexts.signupHeaderText,
+                style: Theme.of(context).textTheme.headlineSmall,
               ),
-              const SizedBox(height: 20.0),
+              const SizedBox(height: ChindiSizes.spaceBtwItems),
 
               /// FORM
               _buildFormWidget(context)
@@ -40,23 +55,19 @@ class SignUpScreen extends StatelessWidget {
         children: <Widget>[
           Row(
             children: <Widget>[
-              Expanded(
-                  child: _buildTextFormField(
-                      'First Name', Icons.person_outline_sharp)),
-              const SizedBox(width: 16.0),
-              Expanded(
-                  child: _buildTextFormField(
-                      'Last Name', Icons.person_outline_sharp)),
+              Expanded(child: _buildTextFormField('First Name', Iconsax.user)),
+              const SizedBox(width: ChindiSizes.spaceBtwItems),
+              Expanded(child: _buildTextFormField('Last Name', Iconsax.user)),
             ],
           ),
-          const SizedBox(width: 16.0, height: 20.0),
-          _buildTextFormField('Email', Icons.email),
-          const SizedBox(width: 16.0, height: 20.0),
-          _buildTextFormField('Password', Icons.lock_sharp),
-          const SizedBox(width: 16.0, height: 20.0),
-          _buildTextFormField('Confirm Password', Icons.lock_sharp),
+          const SizedBox(height: ChindiSizes.spaceBtwItems),
+          _buildTextFormField('Email', Iconsax.direct),
+          const SizedBox(height: ChindiSizes.spaceBtwItems),
+          _buildTextFormField('Password', Iconsax.password_check),
+          const SizedBox(height: ChindiSizes.spaceBtwItems),
+          _buildTextFormField('Confirm Password', Iconsax.password_check),
 
-          const SizedBox(width: 16.0, height: 30.0),
+          const SizedBox(height: ChindiSizes.spaceBtwSections),
 
           /// SIGNUP BUTTON
           SizedBox(
@@ -64,7 +75,7 @@ class SignUpScreen extends StatelessWidget {
             child:
                 ElevatedButton(onPressed: () {}, child: const Text('Sign Up')),
           ),
-          const SizedBox(width: 16.0, height: 30.0),
+          const SizedBox(height: ChindiSizes.spaceBtwSections),
           Text.rich(
             TextSpan(
               children: [
@@ -74,7 +85,7 @@ class SignUpScreen extends StatelessWidget {
                     style: Theme.of(context)
                         .textTheme
                         .bodyLarge
-                        ?.copyWith(color: Color(int.parse('0xff381C72'))))
+                        ?.copyWith(color: ChindiColors.primary))
               ],
             ),
           ),
