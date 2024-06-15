@@ -4,8 +4,8 @@ import 'package:iconsax/iconsax.dart';
 import '../../common/widgets/widgets.dart';
 import '../../utils/constants/sizes.dart';
 
-class ResetPasswordScreen extends StatelessWidget {
-  const ResetPasswordScreen({super.key});
+class ForgotPasswordScreen extends StatelessWidget {
+  const ForgotPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
