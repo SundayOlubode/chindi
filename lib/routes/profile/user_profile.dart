@@ -1,0 +1,122 @@
+import 'package:chindi_ke/components/profile_image.dart';
+import 'package:chindi_ke/routes/auth/forgot_password.dart';
+import 'package:chindi_ke/utils/constants/sizes.dart';
+import 'package:chindi_ke/utils/constants/texts.dart';
+import 'package:flutter/material.dart';
+
+import '../../components/ontap_handler.dart';
+import '../../utils/constants/colors.dart';
+
+class UserProfile extends StatelessWidget {
+  const UserProfile({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // Current Text theme
+    final TextTheme globalTextTheme = Theme.of(context).textTheme;
+    // Current elevated button theme
+    final ButtonStyle? globalButtonStyle =
+        Theme.of(context).elevatedButtonTheme.style;
+
+    return Scaffold(
+      appBar: AppBar(),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(ChindiSizes.defaultSpace),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Center(
+                child: Column(
+                  children: [
+                    Text(
+                      ChindiTexts.profile,
+                      style: globalTextTheme.headlineMedium,
+                    ),
+                    const SizedBox(height: ChindiSizes.spaceBtwItems),
+                    const ProfileImage(imagePath: ChindiTexts.anesuImagePath),
+                    const SizedBox(height: ChindiSizes.spaceBtwItems),
+                    Text(
+                      ChindiTexts.anesuKafesu,
+                      style: globalTextTheme.titleLarge,
+                    ),
+                    Text(
+                      ChindiTexts.anesuEmail,
+                      style: globalTextTheme.bodyMedium,
+                    ),
+                    const SizedBox(height: ChindiSizes.spaceBtwItems),
+                    SizedBox(
+                      width: 125,
+                      height: 60,
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style: globalButtonStyle?.copyWith(
+                          backgroundColor: WidgetStateProperty.all<Color>(
+                              ChindiColors.logoutBkgrdColor),
+                          shape:
+                              WidgetStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(35),
+                            ),
+                          ),
+                        ),
+                        child: Center(
+                          child: Text(
+                            ChindiTexts.logout,
+                            style: globalTextTheme.bodyMedium
+                                ?.copyWith(color: ChindiColors.logoutTextColor),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: ChindiSizes.spaceBtwSections),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  OnTapHandler(
+                    context: context,
+                    dest: const ForgotPasswordScreen(),
+                    child: Text(
+                      ChindiTexts.editProfile,
+                      style: globalTextTheme.bodyLarge,
+                    ),
+                  ),
+                  const SizedBox(height: ChindiSizes.spaceBtwItems),
+                  OnTapHandler(
+                    context: context,
+                    dest: const ForgotPasswordScreen(),
+                    child: Text(
+                      ChindiTexts.notification,
+                      style: globalTextTheme.bodyLarge,
+                    ),
+                  ),
+                  const SizedBox(height: ChindiSizes.spaceBtwItems),
+                  OnTapHandler(
+                    context: context,
+                    dest: const ForgotPasswordScreen(),
+                    child: Text(
+                      ChindiTexts.manageTasks,
+                      style: globalTextTheme.bodyLarge,
+                    ),
+                  ),
+                  const SizedBox(height: ChindiSizes.spaceBtwItems),
+                  OnTapHandler(
+                    context: context,
+                    dest: const ForgotPasswordScreen(),
+                    child: Text(
+                      ChindiTexts.support,
+                      style: globalTextTheme.bodyLarge,
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
