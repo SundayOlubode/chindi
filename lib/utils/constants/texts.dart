@@ -27,4 +27,7 @@ class ChindiTexts {
 
   /// IMAGES PATH
   static const String anesuImagePath = 'assets/images/anesu.jpg';
+
+  /// LIST NEW TASK PAGE
+  static const String heading = 'List New Task';
 }
