@@ -4,8 +4,8 @@ import 'package:iconsax/iconsax.dart';
 import '../../common/widgets/widgets.dart';
 import '../../utils/constants/sizes.dart';
 
-class ResetPasswordScreen extends StatelessWidget {
-  const ResetPasswordScreen({super.key});
+class SignInScreen extends StatelessWidget {
+  const SignInScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +22,14 @@ class ResetPasswordScreen extends StatelessWidget {
               const SizedBox(height: ChindiSizes.spaceBtwSections),
 
               /// FORM TITLE TEXT
-              Text('Sign In',
-                  style: Theme.of(context).textTheme.titleMedium),
+              const Text(
+                'Sign In',
+                style: TextStyle(
+                  fontSize:
+                      ChindiSizes.fontSizeLg, // Use the size from sizes.dart
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               const SizedBox(height: ChindiSizes.spaceBtwSections),
 
               /// FORM
@@ -31,10 +37,9 @@ class ResetPasswordScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _buildTextFormField('Email Address', Iconsax.password_check),
+                    _buildTextFormField('Email Address', Iconsax.direct),
                     const SizedBox(height: ChindiSizes.spaceBtwItems),
-                    _buildTextFormField(
-                        'Password', Iconsax.password_check),
+                    _buildTextFormField('Password', Iconsax.password_check),
                     const SizedBox(height: ChindiSizes.spaceBtwItems),
 
                     /// Button
@@ -42,9 +47,48 @@ class ResetPasswordScreen extends StatelessWidget {
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {},
-                        child: const Text('Reset Password'),
+                        child: const Text('Login'),
                       ),
-                    )
+                    ),
+
+                    /// Add space between button and text
+                    const SizedBox(height: ChindiSizes.spaceBtwItems),
+
+                    /// Centered Forgot Password Text
+                    Center(
+                      child: Text(
+                        'Forgot Password',
+                        style: TextStyle(
+                            fontSize: ChindiSizes.fontSizeSm,
+                            color: ChindiColors.primary,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+
+                    const SizedBox(height: ChindiSizes.spaceBtwItems),
+
+                    Center(
+                      child: RichText(
+                        textAlign: TextAlign.center,
+                        text: TextSpan(
+                          text: "Don't have an account? ",
+                          style: const TextStyle(
+                            fontSize: ChindiSizes.fontSizeSm,
+                            color: ChindiColors.textSecondary,
+                          ),
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: 'Sign Up',
+                              style: TextStyle(
+                                fontSize: ChindiSizes.fontSizeSm,
+                                color: ChindiColors.primary,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               )

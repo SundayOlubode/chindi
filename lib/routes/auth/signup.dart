@@ -3,7 +3,6 @@ import 'package:chindi_ke/utils/constants/sizes.dart';
 import 'package:chindi_ke/utils/constants/texts.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import '../../common/widgets/widgets.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -72,8 +71,10 @@ class SignUpScreen extends StatelessWidget {
           /// SIGNUP BUTTON
           SizedBox(
             width: double.infinity,
-            child:
-                ElevatedButton(onPressed: () {}, child: const Text('Sign Up')),
+            child: ElevatedButton(
+              onPressed: () {},
+              child: const Text('Sign Up'),
+            ),
           ),
           const SizedBox(height: ChindiSizes.spaceBtwSections),
           Text.rich(
@@ -81,11 +82,12 @@ class SignUpScreen extends StatelessWidget {
               children: [
                 const TextSpan(text: 'Already have an account? '),
                 TextSpan(
-                    text: 'Log in',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyLarge
-                        ?.copyWith(color: ChindiColors.primary))
+                  text: 'Log in',
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyLarge
+                      ?.copyWith(color: ChindiColors.primary),
+                )
               ],
             ),
           ),

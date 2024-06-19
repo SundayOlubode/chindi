@@ -4,8 +4,8 @@ import 'package:iconsax/iconsax.dart';
 import '../../common/widgets/widgets.dart';
 import '../../utils/constants/sizes.dart';
 
-class ForgotPasswordScreen extends StatelessWidget {
-  const ForgotPasswordScreen({super.key});
+class ForgotPassword extends StatelessWidget {
+  const ForgotPassword({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,13 +17,22 @@ class ForgotPasswordScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+              /// Add space at the top to move content lower on the screen
+              const SizedBox(height: 100),
+
               /// IMAGE
               const Center(child: ChindiIcon()),
               const SizedBox(height: ChindiSizes.spaceBtwSections),
 
               /// FORM TITLE TEXT
-              Text('Forgot Password',
-                  style: Theme.of(context).textTheme.titleMedium),
+              const Text(
+                'Forgot Password',
+                style: TextStyle(
+                  fontSize:
+                      ChindiSizes.fontSizeLg, // Use the size from sizes.dart
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               const SizedBox(height: ChindiSizes.spaceBtwSections),
 
               /// FORM
@@ -31,7 +40,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _buildTextFormField('Email Address', Iconsax.password_check),
+                    _buildTextFormField('Email Address', Iconsax.direct),
                     const SizedBox(height: ChindiSizes.spaceBtwItems),
 
                     /// Button
