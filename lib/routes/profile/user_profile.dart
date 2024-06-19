@@ -102,7 +102,7 @@ class UserProfile extends StatelessWidget {
                   // NOTIFICATION
                   OnTapHandler(
                     context: context,
-                    dest: const ForgotPasswordScreen(),
+                    dest: const ForgotPassword(),
                     child: Text(
                       ChindiTexts.notification,
                       style: globalTextTheme.bodyLarge,
@@ -113,7 +113,7 @@ class UserProfile extends StatelessWidget {
                   // MANAGE TASKS
                   OnTapHandler(
                     context: context,
-                    dest: const ForgotPasswordScreen(),
+                    dest: const ForgotPassword(),
                     child: Text(
                       ChindiTexts.manageTasks,
                       style: globalTextTheme.bodyLarge,
@@ -124,7 +124,7 @@ class UserProfile extends StatelessWidget {
                   // SUPPORT
                   OnTapHandler(
                     context: context,
-                    dest: const ForgotPasswordScreen(),
+                    dest: const ForgotPassword(),
                     child: Text(
                       ChindiTexts.support,
                       style: globalTextTheme.bodyLarge,
