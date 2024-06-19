@@ -25,7 +25,8 @@ class SignInScreen extends StatelessWidget {
               const Text(
                 'Sign In',
                 style: TextStyle(
-                  fontSize: ChindiSizes.fontSizeLg, // Use the size from sizes.dart
+                  fontSize:
+                      ChindiSizes.fontSizeLg, // Use the size from sizes.dart
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -36,10 +37,9 @@ class SignInScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _buildTextFormField('Email Address', Iconsax.password_check),
+                    _buildTextFormField('Email Address', Iconsax.direct),
                     const SizedBox(height: ChindiSizes.spaceBtwItems),
-                    _buildTextFormField(
-                        'Password', Iconsax.password_check),
+                    _buildTextFormField('Password', Iconsax.password_check),
                     const SizedBox(height: ChindiSizes.spaceBtwItems),
 
                     /// Button
@@ -59,15 +59,14 @@ class SignInScreen extends StatelessWidget {
                       child: Text(
                         'Forgot Password',
                         style: TextStyle(
-                          fontSize: ChindiSizes.fontSizeSm,
-                          color: ChindiColors.primary,
-                          fontWeight: FontWeight.bold
-                        ),
+                            fontSize: ChindiSizes.fontSizeSm,
+                            color: ChindiColors.primary,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
 
                     const SizedBox(height: ChindiSizes.spaceBtwItems),
-                    
+
                     Center(
                       child: RichText(
                         textAlign: TextAlign.center,

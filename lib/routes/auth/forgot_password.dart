@@ -28,7 +28,8 @@ class ForgotPassword extends StatelessWidget {
               const Text(
                 'Forgot Password',
                 style: TextStyle(
-                  fontSize: ChindiSizes.fontSizeLg, // Use the size from sizes.dart
+                  fontSize:
+                      ChindiSizes.fontSizeLg, // Use the size from sizes.dart
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -39,7 +40,7 @@ class ForgotPassword extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _buildTextFormField('Email Address', Iconsax.password_check),
+                    _buildTextFormField('Email Address', Iconsax.direct),
                     const SizedBox(height: ChindiSizes.spaceBtwItems),
 
                     /// Button

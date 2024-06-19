@@ -23,7 +23,7 @@ class ResetPasswordScreen extends StatelessWidget {
 
               /// FORM TITLE TEXT
               Text('Reset Password',
-                  style: Theme.of(context).textTheme.titleMedium),
+                  style: Theme.of(context).textTheme.titleLarge),
               const SizedBox(height: ChindiSizes.spaceBtwSections),
 
               /// FORM
