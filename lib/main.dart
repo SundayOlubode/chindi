@@ -4,27 +4,14 @@ import 'package:chindi_ke/routes/auth/signup.dart';
 import 'package:chindi_ke/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 
+import 'routes/profile/user_profile.dart';
+
 void main() {
-  runApp(App());
+  runApp(const App());
 }
 
 class App extends StatelessWidget {
-  App({super.key});
-
-  // final ThemeData _theme = ThemeData(
-  //   colorScheme: ColorScheme(
-  //     brightness: Brightness.light,
-  //     primary: const Color.fromRGBO(56, 28, 114, 1),
-  //     onPrimary: Colors.white,
-  //     secondary: const Color.fromRGBO(51, 51, 51, 1),
-  //     onSecondary: Colors.white,
-  //     error: Colors.red.shade100,
-  //     onError: Colors.red.shade400,
-  //     surface: Colors.white,
-  //     onSurface: Colors.grey.shade900,
-  //   ),
-  //   fontFamily: 'Poppins',
-  // );
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +20,7 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: ChindiAppTheme.lightTheme,
       darkTheme: ChindiAppTheme.darkTheme,
-      home: const ResetPasswordScreen(),
+      home: const UserProfile(),
     );
   }
 }
