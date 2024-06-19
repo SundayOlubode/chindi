@@ -45,4 +45,8 @@ class ChindiColors {
   static const Color softGrey = Color(0xFFF4F4F4);
   static const Color lightGrey = Color(0xFFF9F9F9);
   static const Color white = Color(0xFFFFFFFF);
+
+  // User Profile Colors
+  static const Color logoutBkgrdColor = Color(0xFFFFD4D4);
+  static const Color logoutTextColor = Color(0xFF5E0000);
 }
