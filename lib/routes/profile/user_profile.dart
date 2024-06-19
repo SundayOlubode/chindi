@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 import '../../components/ontap_handler.dart';
 import '../../utils/constants/colors.dart';
+import 'edit_profile.dart';
 
 class UserProfile extends StatelessWidget {
   const UserProfile({super.key});
@@ -29,22 +30,31 @@ class UserProfile extends StatelessWidget {
               Center(
                 child: Column(
                   children: [
+                    // PROFILE HEADLINE
                     Text(
                       ChindiTexts.profile,
                       style: globalTextTheme.headlineMedium,
                     ),
                     const SizedBox(height: ChindiSizes.spaceBtwItems),
+
+                    // USER PROFILE IMAGE
                     const ProfileImage(imagePath: ChindiTexts.anesuImagePath),
                     const SizedBox(height: ChindiSizes.spaceBtwItems),
+
+                    // USER NAME
                     Text(
                       ChindiTexts.anesuKafesu,
                       style: globalTextTheme.titleLarge,
                     ),
+
+                    // USER EMAIL
                     Text(
                       ChindiTexts.anesuEmail,
                       style: globalTextTheme.bodyMedium,
                     ),
                     const SizedBox(height: ChindiSizes.spaceBtwItems),
+
+                    // LOGOUT BUTTON
                     SizedBox(
                       width: 125,
                       height: 60,
@@ -73,18 +83,23 @@ class UserProfile extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: ChindiSizes.spaceBtwSections),
+
+              // PROFILE SETTING OPTIONS
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
+                  // EDIT PROFILE
                   OnTapHandler(
                     context: context,
-                    dest: const ForgotPasswordScreen(),
+                    dest: const EditProfile(),
                     child: Text(
                       ChindiTexts.editProfile,
                       style: globalTextTheme.bodyLarge,
                     ),
                   ),
                   const SizedBox(height: ChindiSizes.spaceBtwItems),
+
+                  // NOTIFICATION
                   OnTapHandler(
                     context: context,
                     dest: const ForgotPasswordScreen(),
@@ -94,6 +109,8 @@ class UserProfile extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: ChindiSizes.spaceBtwItems),
+
+                  // MANAGE TASKS
                   OnTapHandler(
                     context: context,
                     dest: const ForgotPasswordScreen(),
@@ -103,6 +120,8 @@ class UserProfile extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: ChindiSizes.spaceBtwItems),
+
+                  // SUPPORT
                   OnTapHandler(
                     context: context,
                     dest: const ForgotPasswordScreen(),

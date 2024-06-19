@@ -7,11 +7,11 @@ import 'package:flutter/material.dart';
 import 'routes/profile/user_profile.dart';
 
 void main() {
-  runApp(App());
+  runApp(const App());
 }
 
 class App extends StatelessWidget {
-  App({super.key});
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {

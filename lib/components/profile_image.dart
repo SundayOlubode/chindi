@@ -11,10 +11,23 @@ class ProfileImage extends StatelessWidget {
     return SizedBox(
       width: size,
       height: size,
-      child: ClipOval(
-        child: Image(
-          image: AssetImage(imagePath),
-          fit: BoxFit.fitWidth,
+      child: Container(
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.25),
+              spreadRadius: 5,
+              blurRadius: 7,
+              offset: const Offset(0, 10), // changes position of shadow
+            ),
+          ],
+        ),
+        child: ClipOval(
+          child: Image(
+            image: AssetImage(imagePath),
+            fit: BoxFit.fitWidth,
+          ),
         ),
       ),
     );

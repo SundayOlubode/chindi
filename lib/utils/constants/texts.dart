@@ -6,6 +6,14 @@ class ChindiTexts {
 
   /// PROFILE
   static const String profile = 'Profile';
+  static const String firstname = 'Firstname';
+  static const String lastname = 'Lastname';
+  static const String anesu = 'Anesu';
+  static const String kafesu = 'Kafesu';
+  static const String email = 'Email';
+  static const String address = 'Address';
+  static const String anesuAddress =
+      '56, KG 6959, Kimironko Estate, Gasabo, Bumbogo';
   static const String logout = 'Logout';
   static const String anesuKafesu = 'Anesu Kafesu';
   static const String anesuEmail = 'a.kafesu@alustudent.com';
@@ -13,6 +21,9 @@ class ChindiTexts {
   static const String notification = 'Notification';
   static const String manageTasks = 'Manage Tasks';
   static const String support = 'Support';
+  static const String takePhoto = 'Take Photo';
+  static const String selectPhoto = 'Select Photo';
+  static const String saveProfile = 'Save Profile';
 
   /// IMAGES PATH
   static const String anesuImagePath = 'assets/images/anesu.jpg';
