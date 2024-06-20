@@ -1,7 +1,7 @@
 import 'package:chindi_ke/utils/constants/sizes.dart';
 import 'package:chindi_ke/utils/constants/texts.dart';
 import 'package:flutter/material.dart';
-import '../../utils/constants/colors.dart';
+import '../../../utils/constants/colors.dart';
 
 class ListNewTask extends StatelessWidget {
   const ListNewTask({super.key});

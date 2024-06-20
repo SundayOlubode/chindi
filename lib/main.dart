@@ -4,7 +4,8 @@ import 'package:chindi_ke/routes/auth/reset_password.dart';
 import 'package:chindi_ke/routes/auth/signin.dart';
 import 'package:chindi_ke/routes/auth/signup.dart';
 import 'package:chindi_ke/routes/chat.dart';
-import 'package:chindi_ke/routes/list_new_task.dart';
+import 'package:chindi_ke/routes/home.dart';
+import 'package:chindi_ke/routes/tasks/list_new_task.dart';
 import 'package:chindi_ke/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +25,7 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: ChindiAppTheme.lightTheme,
       darkTheme: ChindiAppTheme.darkTheme,
-      home: const ChatScreen(),
+      home: const Home(),
     );
   }
 }
