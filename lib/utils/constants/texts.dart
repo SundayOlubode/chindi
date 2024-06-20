@@ -35,4 +35,7 @@ class ChindiTexts {
   static const String responseToMsg =
       'Okay. You don\’t have to worry about that. I have some foams that will serve as cushions';
   static const String typeMessage = 'Type message...';
+
+  /// LIST NEW TASK PAGE
+  static const String heading = 'List New Task';
 }
