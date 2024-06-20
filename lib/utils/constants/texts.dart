@@ -27,4 +27,12 @@ class ChindiTexts {
 
   /// IMAGES PATH
   static const String anesuImagePath = 'assets/images/anesu.jpg';
+
+  /// CHAT
+  static const String today = 'Today';
+  static const String textFromAnesu =
+      'Hello, while running the task, kindly ensure to handle the glasses with care. they are so fragile';
+  static const String responseToMsg =
+      'Okay. You don\’t have to worry about that. I have some foams that will serve as cushions';
+  static const String typeMessage = 'Type message...';
 }

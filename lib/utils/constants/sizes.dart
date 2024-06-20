@@ -68,4 +68,8 @@ class ChindiSizes {
 
   // Grid view spacing
   static const double gridViewSpacing = 16.0;
+
+  // Chat
+  static const double chatAppBarImageSize = 30;
+  static const double chatMsgImageSize = 40;
 }
