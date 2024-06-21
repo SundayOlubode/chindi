@@ -13,10 +13,22 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> with TickerProviderStateMixin {
   late TabController _tabController;
 
-  final List<Widget> _tabs = const [
-    Tasks(),
-    ListNewTask(),
-    UserProfile(),
+  final List<Map<String, dynamic>> _tabs = const [
+    {
+      'title': 'Tasks',
+      'showTitle': false,
+      'widget': Tasks(),
+    },
+    {
+      'title': 'Create New Task',
+      'showTitle': true,
+      'widget': ListNewTask(),
+    },
+    {
+      'title': 'Manage Profile',
+      'showTitle': true,
+      'widget': UserProfile(),
+    },
   ];
 
   @override
@@ -36,8 +48,13 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     return Scaffold(
       body: TabBarView(
         controller: _tabController,
-        children: _tabs,
+        children: _tabs.map((tab) => tab['widget'] as Widget).toList(),
       ),
+      appBar: _tabs[_tabController.index]['showTitle']
+          ? AppBar(
+              title: Text(_tabs[_tabController.index]['title']),
+            )
+          : null,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: Theme.of(context).primaryColor,
@@ -56,6 +73,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
+        height: 60,
         color: Colors.white,
         padding: const EdgeInsets.all(0),
         child: Container(
