@@ -16,17 +16,17 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   final List<Map<String, dynamic>> _tabs = const [
     {
       'title': 'Tasks',
-      'showTitle': false,
+      'showAppBar': false,
       'widget': Tasks(),
     },
     {
       'title': 'Create New Task',
-      'showTitle': true,
+      'showAppBar': true,
       'widget': ListNewTask(),
     },
     {
       'title': 'Manage Profile',
-      'showTitle': true,
+      'showAppBar': true,
       'widget': UserProfile(),
     },
   ];
@@ -46,20 +46,21 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: TabBarView(
-        controller: _tabController,
-        children: _tabs.map((tab) => tab['widget'] as Widget).toList(),
-      ),
-      appBar: _tabs[_tabController.index]['showTitle']
+      appBar: _tabs[_tabController.index]['showAppBar']
           ? AppBar(
               title: Text(_tabs[_tabController.index]['title']),
             )
           : null,
+      body: TabBarView(
+        controller: _tabController,
+        children: _tabs.map((tab) => tab['widget'] as Widget).toList(),
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: Theme.of(context).primaryColor,
         onPressed: () {
           _tabController.animateTo(1);
+          setState(() {});
         },
         label: Text(
           'List new task',
@@ -93,12 +94,14 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                 IconButton(
                   onPressed: () {
                     _tabController.animateTo(0);
+                    setState(() {});
                   },
                   icon: const Icon(Icons.task),
                 ),
                 IconButton(
                   onPressed: () {
                     _tabController.animateTo(2);
+                    setState(() {});
                   },
                   icon: const Icon(Icons.person),
                 ),
