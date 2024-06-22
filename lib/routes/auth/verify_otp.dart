@@ -1,7 +1,6 @@
 import 'package:chindi_ke/components/custom_form.dart';
 import 'package:chindi_ke/components/custom_text_form_field.dart';
 import 'package:chindi_ke/components/heading.dart';
-import 'package:chindi_ke/components/secondary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:chindi_ke/components/primary_button.dart';
 import 'package:iconsax/iconsax.dart';
