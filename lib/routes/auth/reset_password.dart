@@ -1,6 +1,6 @@
 import 'package:chindi_ke/components/custom_form.dart';
 import 'package:chindi_ke/components/custom_text_form_field.dart';
-import 'package:chindi_ke/common/widgets/widgets.dart';
+import 'package:chindi_ke/components/chindi_logo.dart';
 import 'package:chindi_ke/components/primary_button.dart';
 import 'package:chindi_ke/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +20,7 @@ class ResetPassword extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 const Center(
-                  child: ChindiIcon(),
+                  child: ChindiLogo(),
                 ),
                 const SizedBox(
                   height: ChindiSizes.spaceBtwSections,

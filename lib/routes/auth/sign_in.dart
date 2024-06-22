@@ -2,7 +2,7 @@ import 'package:chindi_ke/components/custom_form.dart';
 import 'package:chindi_ke/components/custom_text_form_field.dart';
 import 'package:chindi_ke/components/primary_button.dart';
 import 'package:chindi_ke/utils/constants/colors.dart';
-import 'package:chindi_ke/common/widgets/widgets.dart';
+import 'package:chindi_ke/components/chindi_logo.dart';
 import 'package:chindi_ke/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
@@ -21,7 +21,7 @@ class SignIn extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 const Center(
-                  child: ChindiIcon(),
+                  child: ChindiLogo(),
                 ),
                 const SizedBox(
                   height: ChindiSizes.spaceBtwSections,

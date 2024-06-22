@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ChindiIcon extends StatelessWidget {
-  const ChindiIcon({
+class ChindiLogo extends StatelessWidget {
+  const ChindiLogo({
     super.key,
   });
 

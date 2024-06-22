@@ -4,7 +4,7 @@ import 'package:chindi_ke/components/heading.dart';
 import 'package:flutter/material.dart';
 import 'package:chindi_ke/components/primary_button.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:chindi_ke/common/widgets/widgets.dart';
+import 'package:chindi_ke/components/chindi_logo.dart';
 import 'package:chindi_ke/utils/constants/sizes.dart';
 
 class VerifyOtp extends StatelessWidget {
@@ -20,7 +20,7 @@ class VerifyOtp extends StatelessWidget {
             child: Column(
               children: [
                 const Center(
-                  child: ChindiIcon(),
+                  child: ChindiLogo(),
                 ),
                 const SizedBox(
                   height: ChindiSizes.spaceBtwSections,
