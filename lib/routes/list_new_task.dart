@@ -1,7 +1,6 @@
 import 'package:chindi_ke/utils/constants/sizes.dart';
 import 'package:chindi_ke/utils/constants/texts.dart';
 import 'package:flutter/material.dart';
-import '../../utils/constants/colors.dart';
 
 class FormValidation extends StatefulWidget {
   const FormValidation({super.key});
@@ -56,6 +55,7 @@ class _FormValidationState extends State<FormValidation> {
                         }
                         return null;
                       },
+                    maxLength: 30,
                     ),
                     const SizedBox(height: 30),
                     TextFormField(
@@ -69,6 +69,7 @@ class _FormValidationState extends State<FormValidation> {
                         }
                         return null;
                       },
+                    maxLength: 50,
                     ),
                     const SizedBox(height: 30),
                     TextFormField(
@@ -82,6 +83,7 @@ class _FormValidationState extends State<FormValidation> {
                         }
                         return null;
                       },
+                    maxLength: 250,
                     ),
                     const SizedBox(height: 30),
                     TextFormField(
@@ -95,6 +97,7 @@ class _FormValidationState extends State<FormValidation> {
                         }
                         return null;
                       },
+                    maxLength: 500,
                     ),
                     const SizedBox(height: 30),
                     Row(
@@ -105,6 +108,9 @@ class _FormValidationState extends State<FormValidation> {
                             if (_formKey.currentState!.validate()) {
                             }
                           },
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: const Size(120, 50),
+                          ),
                           child: const Text('Create Job'),
                         ),
                         const SizedBox(width: 25),
@@ -115,6 +121,9 @@ class _FormValidationState extends State<FormValidation> {
                             //Focus to the Title
                             _focus.requestFocus();
                           },
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: const Size(120, 50),
+                          ),
                           child: const Text('Reset'),
                         ),
                       ],
