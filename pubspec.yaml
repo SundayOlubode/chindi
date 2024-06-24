@@ -36,6 +36,8 @@ dependencies:
   cupertino_icons: ^1.0.6
   confetti: ^0.7.0
   iconsax: ^0.0.8
+  lottie: ^3.1.2
+  awesome_ripple_animation: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -61,6 +63,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/animations/
 
   fonts:
     - family: Poppins
