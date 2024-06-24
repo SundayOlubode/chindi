@@ -45,67 +45,69 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: _tabs[_tabController.index]['showAppBar']
-          ? AppBar(
-              title: Text(_tabs[_tabController.index]['title']),
-            )
-          : null,
-      body: TabBarView(
-        controller: _tabController,
-        children: _tabs.map((tab) => tab['widget'] as Widget).toList(),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton.extended(
-        backgroundColor: Theme.of(context).primaryColor,
-        onPressed: () {
-          _tabController.animateTo(1);
-          setState(() {});
-        },
-        label: Text(
-          'List new task',
-          style: TextStyle(
+    return SafeArea(
+      child: Scaffold(
+        appBar: _tabs[_tabController.index]['showAppBar']
+            ? AppBar(
+                title: Text(_tabs[_tabController.index]['title']),
+              )
+            : null,
+        body: TabBarView(
+          controller: _tabController,
+          children: _tabs.map((tab) => tab['widget'] as Widget).toList(),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: FloatingActionButton.extended(
+          backgroundColor: Theme.of(context).primaryColor,
+          onPressed: () {
+            _tabController.animateTo(1);
+            setState(() {});
+          },
+          label: Text(
+            'List new task',
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.onPrimary,
+            ),
+          ),
+          icon: Icon(
+            Icons.add_task,
             color: Theme.of(context).colorScheme.onPrimary,
           ),
         ),
-        icon: Icon(
-          Icons.add_task,
-          color: Theme.of(context).colorScheme.onPrimary,
-        ),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        height: 60,
-        color: Colors.white,
-        padding: const EdgeInsets.all(0),
-        child: Container(
-          decoration: const BoxDecoration(
-            border: Border(
-              top: BorderSide(color: Color.fromARGB(255, 224, 224, 224)),
+        bottomNavigationBar: BottomAppBar(
+          height: 60,
+          color: Colors.white,
+          padding: const EdgeInsets.all(0),
+          child: Container(
+            decoration: const BoxDecoration(
+              border: Border(
+                top: BorderSide(color: Color.fromARGB(255, 224, 224, 224)),
+              ),
             ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 30.0,
-              vertical: 0,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                  onPressed: () {
-                    _tabController.animateTo(0);
-                    setState(() {});
-                  },
-                  icon: const Icon(Icons.task),
-                ),
-                IconButton(
-                  onPressed: () {
-                    _tabController.animateTo(2);
-                    setState(() {});
-                  },
-                  icon: const Icon(Icons.person),
-                ),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 30.0,
+                vertical: 0,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      _tabController.animateTo(0);
+                      setState(() {});
+                    },
+                    icon: const Icon(Icons.task),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      _tabController.animateTo(2);
+                      setState(() {});
+                    },
+                    icon: const Icon(Icons.person),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

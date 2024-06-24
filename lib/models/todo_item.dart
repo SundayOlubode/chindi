@@ -3,8 +3,4 @@ class TodoItem {
   bool done;
 
   TodoItem({required this.task, this.done = false});
-
-  void toggle() {
-    done = !done;
-  }
 }

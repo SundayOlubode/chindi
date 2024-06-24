@@ -76,9 +76,6 @@ class _TodoListState extends State<TodoList> {
                       if (numberOfItemsDone == todos.length) {
                         widget.onTodoListComplete!();
                       }
-
-                      // Then we toggle the todo
-                      todo.toggle();
                     });
                   },
                   leading: Icon(

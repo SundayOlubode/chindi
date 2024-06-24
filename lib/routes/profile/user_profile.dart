@@ -4,7 +4,7 @@ import 'package:chindi_ke/utils/constants/sizes.dart';
 import 'package:chindi_ke/utils/constants/texts.dart';
 import 'package:flutter/material.dart';
 
-import '../../components/ontap_handler.dart';
+import '../../components/utils/ontap_handler.dart';
 import '../../utils/constants/colors.dart';
 import 'edit_profile.dart';
 
