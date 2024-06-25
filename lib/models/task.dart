@@ -4,7 +4,7 @@ import 'package:chindi_ke/models/user.dart';
 
 class Task {
   final String title;
-  final double pay;
+  final int pay;
   final String description;
   final List<TodoItem> todoList;
   final Location location;

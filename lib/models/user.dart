@@ -6,6 +6,8 @@ class User {
   final String email;
   final String uid;
   final Location location;
+  final double rating;
+  final String avatarUrl;
 
   const User({
     required this.firstName,
@@ -13,5 +15,7 @@ class User {
     required this.email,
     required this.location,
     required this.uid,
+    required this.rating,
+    required this.avatarUrl,
   });
 }

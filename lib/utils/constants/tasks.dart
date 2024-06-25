@@ -19,11 +19,14 @@ Location taskLocation = const Location(
 );
 
 User taskOwner = User(
-    firstName: 'Anesu',
-    lastName: 'Kafesu',
-    email: 'anesukafesu@example.com',
-    location: taskLocation,
-    uid: '123');
+  firstName: 'Anesu',
+  lastName: 'Kafesu',
+  email: 'anesukafesu@example.com',
+  location: taskLocation,
+  uid: '123',
+  rating: 4.5,
+  avatarUrl: 'https://silver-sable-868cb1.netlify.app/team/anesu-kafesu.jpg',
+);
 
 Task task = Task(
   title: 'Kitchen Cleaning',
