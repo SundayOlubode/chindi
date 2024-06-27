@@ -30,7 +30,7 @@ User taskOwner = User(
 
 Task task = Task(
   title: 'Kitchen Cleaning',
-  pay: 4000,
+  pay: 800,
   description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet arcu sit amet risus vulputate tristique ac vitae urna. Aenean id lacinia erat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque maximus justo quis arcu porttitor, et ultrices velit pellentesque',
   location: taskLocation,

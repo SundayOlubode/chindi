@@ -1,4 +1,4 @@
-import 'package:chindi_ke/components/tasks/task_display.dart';
+import 'package:chindi_ke/components/task_summary.dart';
 import 'package:chindi_ke/components/utils/chindi_logo.dart';
 import 'package:chindi_ke/components/custom_text_form_field.dart';
 import 'package:chindi_ke/utils/constants/sizes.dart';
@@ -43,20 +43,6 @@ class Tasks extends StatelessWidget {
           const SizedBox(
             height: 15,
           ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: tasks.length,
-              itemBuilder: (context, index) {
-                Task task = tasks[index];
-                return Column(children: [
-                  TaskDisplay(task: task),
-                  const SizedBox(
-                    height: 20,
-                  )
-                ]);
-              },
-            ),
-          )
         ],
       ),
     );

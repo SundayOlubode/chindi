@@ -10,14 +10,20 @@ class ChindiAppBarTheme {
     elevation: 0,
     centerTitle: false,
     scrolledUnderElevation: 0,
-    backgroundColor: Color.fromRGBO(56, 28, 114, 1),
+    backgroundColor: Color.fromRGBO(255, 255, 255, 1),
     surfaceTintColor: Colors.transparent,
-    iconTheme:
-        IconThemeData(color: ChindiColors.white, size: ChindiSizes.iconMd),
-    actionsIconTheme:
-        IconThemeData(color: ChindiColors.black, size: ChindiSizes.iconMd),
+    iconTheme: IconThemeData(
+      color: Color.fromRGBO(30, 30, 30, 1),
+      size: ChindiSizes.iconMd,
+    ),
+    actionsIconTheme: IconThemeData(
+      color: ChindiColors.black,
+      size: ChindiSizes.iconMd,
+    ),
     titleTextStyle: TextStyle(
-        fontSize: 18.0, fontWeight: FontWeight.w600, color: ChindiColors.white),
+      fontSize: 20.0,
+      color: Color.fromRGBO(30, 30, 30, 1),
+    ),
   );
 
   /// Dark App Bar Theme
@@ -25,13 +31,19 @@ class ChindiAppBarTheme {
     elevation: 0,
     centerTitle: false,
     scrolledUnderElevation: 0,
-    backgroundColor: Color.fromRGBO(56, 28, 114, 1),
+    backgroundColor: Color.fromRGBO(255, 255, 255, 1),
     surfaceTintColor: Colors.transparent,
-    iconTheme:
-        IconThemeData(color: ChindiColors.white, size: ChindiSizes.iconMd),
-    actionsIconTheme:
-        IconThemeData(color: ChindiColors.white, size: ChindiSizes.iconMd),
+    iconTheme: IconThemeData(
+      color: Color.fromRGBO(30, 30, 30, 1),
+      size: ChindiSizes.iconMd,
+    ),
+    actionsIconTheme: IconThemeData(
+      color: ChindiColors.white,
+      size: ChindiSizes.iconMd,
+    ),
     titleTextStyle: TextStyle(
-        fontSize: 18.0, fontWeight: FontWeight.w600, color: ChindiColors.white),
+      fontSize: 20.0,
+      color: Color.fromRGBO(30, 30, 30, 1),
+    ),
   );
 }

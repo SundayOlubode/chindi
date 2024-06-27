@@ -10,5 +10,12 @@ String formatCurrency(int amount) {
       result += ',';
     }
   }
-  return 'Ksh ${result.split('').reversed.join('')}';
+
+  result = result.split('').reversed.join();
+
+  if (result[0] == ',') {
+    result = result.substring(1);
+  }
+
+  return 'Ksh $result';
 }
