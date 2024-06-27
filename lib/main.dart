@@ -26,7 +26,7 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: ChindiAppTheme.lightTheme,
       darkTheme: ChindiAppTheme.darkTheme,
-      home: const RegFail(),
+      home: const FormValidation(),
     );
   }
 }
