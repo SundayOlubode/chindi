@@ -15,6 +15,7 @@ class ChindiSizes {
   static const double iconLg = 32.0;
 
   // Font sizes
+  static const double fontsizess = 12.0;
   static const double fontSizeSm = 14.0;
   static const double fontSizeMd = 16.0;
   static const double fontSizeLg = 18.0;

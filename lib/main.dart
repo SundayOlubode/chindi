@@ -9,8 +9,9 @@ import 'package:chindi_ke/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:chindi_ke/routes/reg_succesful.dart';
 import 'package:chindi_ke/routes/reg_unsuccesful.dart';
-
+import 'package:chindi_ke/routes/profile/edit_profile.dart';
 import 'routes/profile/user_profile.dart';
+import 'package:chindi_ke/routes/notifications.dart';
 
 void main() {
   runApp(const App());
@@ -26,7 +27,7 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: ChindiAppTheme.lightTheme,
       darkTheme: ChindiAppTheme.darkTheme,
-      home: const FormValidation(),
+      home: const Notifications(),
     );
   }
 }
