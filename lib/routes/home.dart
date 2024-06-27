@@ -25,7 +25,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       'widget': ListNewTask(),
     },
     {
-      'title': 'Manage Profile',
+      'title': 'Profile',
       'showAppBar': true,
       'widget': UserProfile(),
     },
@@ -50,6 +50,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         appBar: _tabs[_tabController.index]['showAppBar']
             ? AppBar(
                 title: Text(_tabs[_tabController.index]['title']),
+                centerTitle: true,
               )
             : null,
         body: TabBarView(
