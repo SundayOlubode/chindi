@@ -38,4 +38,11 @@ class ChindiTexts {
 
   /// LIST NEW TASK PAGE
   static const String heading = 'List New Task';
+
+  ///Registraition Successful
+  static const String registrationSuccessful = 'Your task has been created successfully';
+
+  ///Registraition Successful
+  static const String registrationFail = 'Your task has not been created';
 }
+

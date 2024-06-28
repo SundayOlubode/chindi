@@ -1,10 +1,10 @@
-import 'package:chindi_ke/components/utils/custom_form.dart';
-import 'package:chindi_ke/components/custom_text_form_field.dart';
-import 'package:chindi_ke/components/utils/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import '../../components/utils/chindi_logo.dart';
-import '../../utils/constants/sizes.dart';
+import 'package:chindi_ke/components/utils/chindi_logo.dart';
+import 'package:chindi_ke/utils/constants/sizes.dart';
+import 'package:chindi_ke/components/custom_text_form_field.dart';
+import 'package:chindi_ke/components/utils/custom_form.dart';
+import 'package:chindi_ke/components/utils/primary_button.dart';
 
 class ForgotPassword extends StatelessWidget {
   const ForgotPassword({super.key});
