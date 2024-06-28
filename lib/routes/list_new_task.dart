@@ -113,19 +113,6 @@ class _FormValidationState extends State<FormValidation> {
                           ),
                           child: const Text('Create Job'),
                         ),
-                        const SizedBox(width: 25),
-                        ElevatedButton(
-                          onPressed: () {
-                            // Reset Form
-                            _formKey.currentState!.reset();
-                            //Focus to the Title
-                            _focus.requestFocus();
-                          },
-                          style: ElevatedButton.styleFrom(
-                            minimumSize: const Size(120, 50),
-                          ),
-                          child: const Text('Reset'),
-                        ),
                       ],
                     ),
                   ],
