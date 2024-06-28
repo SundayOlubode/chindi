@@ -1,9 +1,7 @@
-import 'package:chindi_ke/components/task_summary.dart';
 import 'package:chindi_ke/components/tasks_list.dart';
 import 'package:chindi_ke/components/utils/chindi_logo.dart';
 import 'package:chindi_ke/components/custom_text_form_field.dart';
 import 'package:chindi_ke/utils/constants/sizes.dart';
-import 'package:chindi_ke/models/task.dart';
 import 'package:flutter/material.dart';
 import 'package:chindi_ke/utils/constants/tasks.dart';
 
