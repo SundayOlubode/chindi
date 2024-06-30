@@ -44,14 +44,23 @@ class EditProfile extends StatelessWidget {
                 const SizedBox(height: ChindiSizes.spaceBtwSections),
                 Column(
                   children: [
-                    _buildProfileTextField(
-                      ChindiTexts.firstname,
-                      ChindiTexts.anesu,
-                    ),
-                    const SizedBox(height: ChindiSizes.spaceBtwItems),
-                    _buildProfileTextField(
-                      ChindiTexts.lastname,
-                      ChindiTexts.kafesu,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: _buildProfileTextField(
+                            ChindiTexts.firstname,
+                            ChindiTexts.anesu,
+                          ),
+                        ),
+                        const SizedBox(width: ChindiSizes.spaceBtwItems),
+                        Expanded(
+                          child: _buildProfileTextField(
+                            ChindiTexts.lastname,
+                            ChindiTexts.kafesu,
+                          ),
+                        ),
+                      ],
                     ),
                     const SizedBox(height: ChindiSizes.spaceBtwItems),
                     _buildProfileTextField(
@@ -59,17 +68,49 @@ class EditProfile extends StatelessWidget {
                       ChindiTexts.anesuEmail,
                     ),
                     const SizedBox(height: ChindiSizes.spaceBtwItems),
-                    _buildProfileTextField(
-                      ChindiTexts.address,
-                      ChindiTexts.anesuAddress,
+                    Row(
+                      children: [
+                        Expanded(
+                          child: _buildProfileTextField(
+                            ChindiTexts.street,
+                            ChindiTexts.anesuStreet,
+                          ),
+                        ),
+                        const SizedBox(width: ChindiSizes.spaceBtwItems),
+                        Expanded(
+                          child: _buildProfileTextField(
+                            ChindiTexts.village,
+                            ChindiTexts.anesuVillage,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: ChindiSizes.spaceBtwItems),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: _buildProfileTextField(
+                            ChindiTexts.ward,
+                            ChindiTexts.anesuWard,
+                          ),
+                        ),
+                        const SizedBox(width: ChindiSizes.spaceBtwItems),
+                        Expanded(
+                          child: _buildProfileTextField(
+                            ChindiTexts.subCounty,
+                            ChindiTexts.anesuSubCounty,
+                          ),
+                        ),
+                      ],
                     ),
                     const SizedBox(height: ChindiSizes.spaceBtwItems),
                     _buildProfileTextField(
-                      ChindiTexts.address,
-                      ChindiTexts.anesuAddress,
+                      ChindiTexts.county,
+                      ChindiTexts.anesuCounty,
                     ),
                   ],
                 ),
+                const SizedBox(height: ChindiSizes.spaceBtwSections),
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
