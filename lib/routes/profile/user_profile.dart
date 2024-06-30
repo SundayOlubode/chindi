@@ -28,13 +28,6 @@ class UserProfile extends StatelessWidget {
             Center(
               child: Column(
                 children: [
-                  // PROFILE HEADLINE
-                  Text(
-                    ChindiTexts.profile,
-                    style: globalTextTheme.headlineMedium,
-                  ),
-                  const SizedBox(height: ChindiSizes.spaceBtwItems),
-
                   // USER PROFILE IMAGE
                   const ProfileImage(imagePath: ChindiTexts.anesuImagePath),
                   const SizedBox(height: ChindiSizes.spaceBtwItems),

@@ -12,8 +12,18 @@ class ChindiTexts {
   static const String kafesu = 'Kafesu';
   static const String email = 'Email';
   static const String address = 'Address';
+  static const String street = 'Street';
+  static const String village = 'Village';
+  static const String ward = 'Ward';
+  static const String subCounty = 'Sub-County';
+  static const String county = 'County';
   static const String anesuAddress =
       '56, KG 6959, Kimironko Estate, Gasabo, Bumbogo';
+  static const String anesuVillage = 'Gasabo';
+  static const String anesuStreet = 'Moi Avenue';
+  static const String anesuWard = 'Ayamata';
+  static const String anesuSubCounty = 'Starehe';
+  static const String anesuCounty = 'Mombasa';
   static const String logout = 'Logout';
   static const String anesuKafesu = 'Anesu Kafesu';
   static const String anesuEmail = 'a.kafesu@alustudent.com';
@@ -40,9 +50,9 @@ class ChindiTexts {
   static const String heading = 'List New Task';
 
   ///Registraition Successful
-  static const String registrationSuccessful = 'Your task has been created successfully';
+  static const String registrationSuccessful =
+      'Your task has been created successfully';
 
   ///Registraition Successful
   static const String registrationFail = 'Your task has not been created';
 }
-
