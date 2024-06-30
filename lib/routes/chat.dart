@@ -43,21 +43,31 @@ class ChatScreen extends StatelessWidget {
             SafeArea(
               bottom: true,
               top: false,
-              child: Row(
-                children: <Widget>[
-                  const Expanded(
-                    child: TextField(
-                      decoration:
-                          InputDecoration(hintText: ChindiTexts.typeMessage),
+              child: Container(
+                color: ChindiColors.primary,
+                child: Row(
+                  children: <Widget>[
+                    const Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: ChindiTexts.typeMessage,
+                          hintStyle: TextStyle(
+                            color: ChindiColors.white,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.send),
-                    onPressed: () {
-                      // Send message functionality
-                    },
-                  ),
-                ],
+                    IconButton(
+                      icon: const Icon(
+                        Icons.send,
+                        color: ChindiColors.white,
+                      ),
+                      onPressed: () {
+                        // Send message functionality
+                      },
+                    ),
+                  ],
+                ),
               ),
             )
           ],
