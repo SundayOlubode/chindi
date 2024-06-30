@@ -12,16 +12,8 @@ class ProfileImage extends StatelessWidget {
       width: size,
       height: size,
       child: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           shape: BoxShape.circle,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.25),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: const Offset(0, 10), // changes position of shadow
-            ),
-          ],
         ),
         child: ClipOval(
           child: Image(
