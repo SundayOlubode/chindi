@@ -17,15 +17,12 @@ class _ListNewTaskState extends State<ListNewTask> {
 
   @override
   Widget build(BuildContext context) {
-    // Current Text theme
-    final TextTheme globalTextTheme = Theme.of(context).textTheme;
     // Current elevated button theme
     // final ButtonStyle? globalButtonStyle =
     Theme.of(context).elevatedButtonTheme.style;
 
-    return Scaffold(
-      appBar: AppBar(),
-      body: Form(
+    return SingleChildScrollView(
+      child: Form(
         key: _formKey,
         child: Padding(
           padding: const EdgeInsets.all(ChindiSizes.defaultSpace),
@@ -35,12 +32,6 @@ class _ListNewTaskState extends State<ListNewTask> {
               Center(
                 child: Column(
                   children: [
-                    // PAGE HEADLINE
-                    Text(
-                      ChindiTexts.heading,
-                      style: globalTextTheme.headlineMedium,
-                    ),
-                    const SizedBox(height: ChindiSizes.spaceBtwItems),
                     //Form
                     TextFormField(
                       autofocus: true,

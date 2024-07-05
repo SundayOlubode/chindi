@@ -18,16 +18,19 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       'title': 'Tasks',
       'showAppBar': false,
       'widget': Tasks(),
+      'showFloatingActionButton': true
     },
     {
       'title': 'Create New Task',
       'showAppBar': true,
       'widget': ListNewTask(),
+      'showFloatingActionButton': false
     },
     {
       'title': 'Profile',
       'showAppBar': true,
       'widget': UserProfile(),
+      'showFloatingActionButton': true
     },
   ];
 
@@ -49,6 +52,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       child: Scaffold(
         appBar: _tabs[_tabController.index]['showAppBar']
             ? AppBar(
+                automaticallyImplyLeading: false,
                 title: Text(_tabs[_tabController.index]['title']),
                 centerTitle: true,
               )
@@ -58,23 +62,26 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           children: _tabs.map((tab) => tab['widget'] as Widget).toList(),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: FloatingActionButton.extended(
-          backgroundColor: Theme.of(context).primaryColor,
-          onPressed: () {
-            _tabController.animateTo(1);
-            setState(() {});
-          },
-          label: Text(
-            'List new task',
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.onPrimary,
-            ),
-          ),
-          icon: Icon(
-            Icons.add_task,
-            color: Theme.of(context).colorScheme.onPrimary,
-          ),
-        ),
+        floatingActionButton: _tabs[_tabController.index]
+                ['showFloatingActionButton']
+            ? FloatingActionButton.extended(
+                backgroundColor: Theme.of(context).primaryColor,
+                onPressed: () {
+                  _tabController.animateTo(1);
+                  setState(() {});
+                },
+                label: Text(
+                  'List new task',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onPrimary,
+                  ),
+                ),
+                icon: Icon(
+                  Icons.add_task,
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
+              )
+            : null,
         bottomNavigationBar: BottomAppBar(
           height: 60,
           color: Colors.white,

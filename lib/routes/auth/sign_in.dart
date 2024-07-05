@@ -1,6 +1,7 @@
 import 'package:chindi_ke/components/utils/custom_form.dart';
 import 'package:chindi_ke/components/custom_text_form_field.dart';
 import 'package:chindi_ke/components/utils/primary_button.dart';
+import 'package:chindi_ke/routes/home.dart';
 import 'package:chindi_ke/utils/constants/colors.dart';
 import 'package:chindi_ke/components/utils/chindi_logo.dart';
 import 'package:chindi_ke/utils/constants/sizes.dart';
@@ -51,8 +52,15 @@ class SignIn extends StatelessWidget {
                       height: ChindiSizes.spaceBtwItems,
                     ),
                     PrimaryButton(
-                      onPressed: () {},
-                      label: 'Log in',
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Home(),
+                          ),
+                        );
+                      },
+                      label: 'Sign in',
                     ),
                   ],
                 ),

@@ -1,5 +1,9 @@
 import 'package:chindi_ke/components/profile_image.dart';
 import 'package:chindi_ke/routes/auth/forgot_password.dart';
+import 'package:chindi_ke/routes/auth/sign_in.dart';
+import 'package:chindi_ke/routes/chat.dart';
+import 'package:chindi_ke/routes/notifications.dart';
+import 'package:chindi_ke/routes/tasks/manage_tasks.dart';
 import 'package:chindi_ke/utils/constants/sizes.dart';
 import 'package:chindi_ke/utils/constants/texts.dart';
 import 'package:flutter/material.dart';
@@ -50,10 +54,18 @@ class UserProfile extends StatelessWidget {
                     width: 125,
                     height: 60,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SignIn(),
+                          ),
+                        );
+                      },
                       style: globalButtonStyle?.copyWith(
                         backgroundColor: WidgetStateProperty.all<Color>(
-                            ChindiColors.logoutBkgrdColor),
+                          ChindiColors.logoutBkgrdColor,
+                        ),
                         shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(35),
@@ -63,8 +75,9 @@ class UserProfile extends StatelessWidget {
                       child: Center(
                         child: Text(
                           ChindiTexts.logout,
-                          style: globalTextTheme.bodyMedium
-                              ?.copyWith(color: ChindiColors.logoutTextColor),
+                          style: globalTextTheme.bodyMedium?.copyWith(
+                            color: ChindiColors.logoutTextColor,
+                          ),
                         ),
                       ),
                     ),
@@ -92,7 +105,7 @@ class UserProfile extends StatelessWidget {
                 // NOTIFICATION
                 OnTapHandler(
                   context: context,
-                  dest: const ForgotPassword(),
+                  dest: const Notifications(),
                   child: Text(
                     ChindiTexts.notification,
                     style: globalTextTheme.bodyLarge,
@@ -103,7 +116,7 @@ class UserProfile extends StatelessWidget {
                 // MANAGE TASKS
                 OnTapHandler(
                   context: context,
-                  dest: const ForgotPassword(),
+                  dest: const ManageTasks(),
                   child: Text(
                     ChindiTexts.manageTasks,
                     style: globalTextTheme.bodyLarge,
@@ -114,7 +127,7 @@ class UserProfile extends StatelessWidget {
                 // SUPPORT
                 OnTapHandler(
                   context: context,
-                  dest: const ForgotPassword(),
+                  dest: const Chat(),
                   child: Text(
                     ChindiTexts.support,
                     style: globalTextTheme.bodyLarge,

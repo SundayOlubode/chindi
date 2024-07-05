@@ -3,14 +3,22 @@ import 'package:chindi_ke/utils/constants/sizes.dart';
 import 'package:chindi_ke/utils/constants/texts.dart';
 import 'package:flutter/material.dart';
 
-class ChatScreen extends StatelessWidget {
-  const ChatScreen({super.key});
+class Chat extends StatelessWidget {
+  const Chat({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(Icons.arrow_back),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
+        ),
         title: const SizedBox(
           child: Row(
             children: [
@@ -48,11 +56,14 @@ class ChatScreen extends StatelessWidget {
                 child: Row(
                   children: <Widget>[
                     const Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: ChindiTexts.typeMessage,
-                          hintStyle: TextStyle(
-                            color: ChindiColors.white,
+                      child: Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintText: ChindiTexts.typeMessage,
+                            hintStyle: TextStyle(
+                              color: ChindiColors.white,
+                            ),
                           ),
                         ),
                       ),

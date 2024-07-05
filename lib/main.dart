@@ -1,5 +1,4 @@
-import 'package:chindi_ke/routes/chat.dart';
-import 'package:chindi_ke/routes/home.dart';
+import 'package:chindi_ke/routes/auth/sign_in.dart';
 import 'package:chindi_ke/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +16,7 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: ChindiAppTheme.lightTheme,
       darkTheme: ChindiAppTheme.darkTheme,
-      home: const Home(),
+      home: const SignIn(),
     );
   }
 }
