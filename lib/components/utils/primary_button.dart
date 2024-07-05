@@ -11,12 +11,14 @@ class PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: ElevatedButton(
-        onPressed: onPressed,
-        child: Text(label),
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: const ButtonStyle(
+        padding: WidgetStatePropertyAll(
+          EdgeInsets.symmetric(horizontal: 30.0, vertical: 0),
+        ),
       ),
+      child: Text(label),
     );
   }
 }

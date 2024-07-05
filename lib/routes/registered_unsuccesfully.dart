@@ -4,14 +4,9 @@ import 'package:chindi_ke/utils/constants/texts.dart';
 import 'package:chindi_ke/components/utils/primary_button.dart';
 import '../../utils/constants/sizes.dart';
 
-class RegSuccesful extends StatefulWidget {
-  const RegSuccesful({super.key});
+class RegistrationFailed extends StatelessWidget {
+  const RegistrationFailed({super.key});
 
-  @override
-  State<RegSuccesful> createState() => _RegSuccessfulState();
-}
-
-class _RegSuccessfulState extends State<RegSuccesful> {
   @override
   Widget build(BuildContext context) {
     final TextTheme globalTextTheme = Theme.of(context).textTheme;
@@ -20,7 +15,7 @@ class _RegSuccessfulState extends State<RegSuccesful> {
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           ///TITLE TEXT
           const Text(
-            'Task Creation Successful',
+            'Task Creation Failed',
             style: TextStyle(
               fontSize: ChindiSizes.fontSizeLg, // Use the size from sizes.dart
               fontWeight: FontWeight.bold,
@@ -37,7 +32,7 @@ class _RegSuccessfulState extends State<RegSuccesful> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(100),
               child: Image.asset(
-                "assets/images/Success.png",
+                "assets/images/Fail.png",
                 fit: BoxFit.cover,
                 width: 100.0,
                 height: 100,
@@ -46,13 +41,13 @@ class _RegSuccessfulState extends State<RegSuccesful> {
           ),
           const SizedBox(height: 20),
           Text(
-            ChindiTexts.registrationSuccessful,
+            ChindiTexts.registrationFail,
             style: globalTextTheme.bodyLarge,
           ),
           const SizedBox(height: 20),
           PrimaryButton(
             onPressed: () {},
-            label: 'Browse more jobs',
+            label: 'Retry',
           ),
         ]),
       ),

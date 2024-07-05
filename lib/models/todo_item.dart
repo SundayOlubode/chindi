@@ -1,6 +1,6 @@
 class TodoItem {
-  final String task;
+  String task;
   bool done;
 
-  TodoItem({required this.task, this.done = false});
+  TodoItem({this.task = '', this.done = false});
 }
