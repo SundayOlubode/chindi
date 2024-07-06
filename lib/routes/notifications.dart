@@ -46,13 +46,6 @@ class Notifications extends StatelessWidget {
                       return NotificationView(notification: notification);
                     },
                   );
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) =>
-                  //         NotificationView(notification: notification),
-                  //   ),
-                  // );
                 },
                 title: Text(
                   notification.title,

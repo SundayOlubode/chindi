@@ -1,5 +1,6 @@
 import 'package:chindi_ke/components/todo_list.dart';
 import 'package:chindi_ke/components/user_profile_summary.dart';
+import 'package:chindi_ke/routes/registered_succesfully.dart';
 import 'package:chindi_ke/styles/text.dart';
 import 'package:chindi_ke/utils/helpers/create_location_description.dart';
 import 'package:chindi_ke/utils/helpers/format_currency.dart';
@@ -17,8 +18,19 @@ class TaskDetails extends StatelessWidget {
         title: const Text('Task Details'),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
-        label: const Text('Register for task'),
+        backgroundColor: Theme.of(context).primaryColor,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const RegisteredSuccesfully(),
+            ),
+          );
+        },
+        label: const Text(
+          'Register for task',
+          style: TextStyle(color: Colors.white),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),

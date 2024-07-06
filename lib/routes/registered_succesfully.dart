@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:chindi_ke/utils/constants/texts.dart';
 import 'package:chindi_ke/components/utils/primary_button.dart';
 import '../../utils/constants/sizes.dart';
+import 'package:chindi_ke/routes/home.dart';
 
 class RegisteredSuccesfully extends StatelessWidget {
   const RegisteredSuccesfully({super.key});
@@ -24,7 +25,7 @@ class RegisteredSuccesfully extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: ChindiSizes.spaceBtwSections),
+            // const SizedBox(height: 10),
             RippleAnimation(
               size: const Size(200, 200),
               repeat: false,
@@ -49,7 +50,14 @@ class RegisteredSuccesfully extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             PrimaryButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Home(),
+                  ),
+                );
+              },
               label: 'More jobs',
             ),
           ],

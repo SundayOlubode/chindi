@@ -2,6 +2,8 @@ import 'package:chindi_ke/components/utils/chindi_logo.dart';
 import 'package:chindi_ke/components/utils/custom_form.dart';
 import 'package:chindi_ke/components/custom_text_form_field.dart';
 import 'package:chindi_ke/components/utils/primary_button.dart';
+import 'package:chindi_ke/routes/auth/sign_in.dart';
+import 'package:chindi_ke/routes/home.dart';
 import 'package:chindi_ke/utils/constants/sizes.dart';
 import 'package:chindi_ke/utils/constants/texts.dart';
 import 'package:flutter/material.dart';
@@ -72,9 +74,19 @@ class SignUp extends StatelessWidget {
                     const SizedBox(
                       height: ChindiSizes.spaceBtwSections,
                     ),
-                    PrimaryButton(
-                      onPressed: () {},
-                      label: 'Sign Up',
+                    SizedBox(
+                      width: double.infinity,
+                      child: PrimaryButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const Home(),
+                            ),
+                          );
+                        },
+                        label: 'Sign Up',
+                      ),
                     ),
                     const SizedBox(height: ChindiSizes.spaceBtwSections),
                     Row(
@@ -82,7 +94,14 @@ class SignUp extends StatelessWidget {
                       children: [
                         const Text('Already have an account?'),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const SignIn(),
+                              ),
+                            );
+                          },
                           child: const Text('Sign in'),
                         )
                       ],

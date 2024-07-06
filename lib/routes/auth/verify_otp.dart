@@ -1,6 +1,7 @@
 import 'package:chindi_ke/components/utils/custom_form.dart';
 import 'package:chindi_ke/components/custom_text_form_field.dart';
 import 'package:chindi_ke/components/utils/heading.dart';
+import 'package:chindi_ke/routes/auth/reset_password.dart';
 import 'package:flutter/material.dart';
 import 'package:chindi_ke/components/utils/primary_button.dart';
 import 'package:iconsax/iconsax.dart';
@@ -48,9 +49,19 @@ class VerifyOtp extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                    PrimaryButton(
-                      onPressed: () {},
-                      label: 'Verify OTP',
+                    SizedBox(
+                      width: double.infinity,
+                      child: PrimaryButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ResetPassword(),
+                            ),
+                          );
+                        },
+                        label: 'Verify OTP',
+                      ),
                     ),
                   ],
                 ),

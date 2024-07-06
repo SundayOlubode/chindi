@@ -1,3 +1,4 @@
+import 'package:chindi_ke/routes/auth/verify_otp.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:chindi_ke/components/utils/chindi_logo.dart';
@@ -43,9 +44,19 @@ class ForgotPassword extends StatelessWidget {
                     const SizedBox(
                       height: ChindiSizes.spaceBtwItems,
                     ),
-                    PrimaryButton(
-                      onPressed: () {},
-                      label: 'Send OTP',
+                    SizedBox(
+                      width: double.infinity,
+                      child: PrimaryButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const VerifyOtp(),
+                            ),
+                          );
+                        },
+                        label: 'Send OTP',
+                      ),
                     )
                   ],
                 ),

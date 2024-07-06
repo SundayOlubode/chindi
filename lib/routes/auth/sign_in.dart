@@ -1,6 +1,8 @@
 import 'package:chindi_ke/components/utils/custom_form.dart';
 import 'package:chindi_ke/components/custom_text_form_field.dart';
 import 'package:chindi_ke/components/utils/primary_button.dart';
+import 'package:chindi_ke/routes/auth/forgot_password.dart';
+import 'package:chindi_ke/routes/auth/sign_up.dart';
 import 'package:chindi_ke/routes/home.dart';
 import 'package:chindi_ke/utils/constants/colors.dart';
 import 'package:chindi_ke/components/utils/chindi_logo.dart';
@@ -51,27 +53,40 @@ class SignIn extends StatelessWidget {
                     const SizedBox(
                       height: ChindiSizes.spaceBtwItems,
                     ),
-                    PrimaryButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const Home(),
-                          ),
-                        );
-                      },
-                      label: 'Sign in',
+                    SizedBox(
+                      width: double.infinity,
+                      child: PrimaryButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const Home(),
+                            ),
+                          );
+                        },
+                        label: 'Sign in',
+                      ),
                     ),
                   ],
                 ),
                 const SizedBox(height: ChindiSizes.spaceBtwItems),
                 Center(
-                  child: Text(
-                    'Forgot Password',
-                    style: TextStyle(
-                      fontSize: ChindiSizes.fontSizeSm,
-                      color: ChindiColors.primary,
-                      fontWeight: FontWeight.bold,
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ForgotPassword(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      'Forgot Password',
+                      style: TextStyle(
+                        fontSize: ChindiSizes.fontSizeSm,
+                        color: ChindiColors.primary,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -85,7 +100,14 @@ class SignIn extends StatelessWidget {
                       "Don't have an account? ",
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SignUp(),
+                          ),
+                        );
+                      },
                       child: const Text('Sign Up'),
                     ),
                   ],
