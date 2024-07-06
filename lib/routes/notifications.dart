@@ -1,6 +1,5 @@
 import 'package:chindi_ke/utils/helpers/create_time_description.dart';
 import 'package:flutter/material.dart';
-import 'package:chindi_ke/utils/constants/sizes.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:chindi_ke/utils/constants/notifications.dart';
 import 'package:chindi_ke/models/notification.dart' as n;
@@ -11,9 +10,6 @@ class Notifications extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    // Current Text theme
-
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
