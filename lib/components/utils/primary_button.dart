@@ -15,7 +15,10 @@ class PrimaryButton extends StatelessWidget {
       onPressed: onPressed,
       style: const ButtonStyle(
         padding: WidgetStatePropertyAll(
-          EdgeInsets.symmetric(horizontal: 30.0, vertical: 0),
+          EdgeInsets.symmetric(
+            horizontal: 30.0,
+            vertical: 15.0,
+          ),
         ),
       ),
       child: Text(label),
