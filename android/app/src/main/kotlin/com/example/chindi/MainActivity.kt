@@ -1,4 +1,4 @@
-package com.example.chindi_ky
+package com.example.chindi
 
 import io.flutter.embedding.android.FlutterActivity
 
