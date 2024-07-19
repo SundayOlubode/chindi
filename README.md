@@ -1,16 +1,13 @@
-# Chindi, Kenya
+# Chindi: Simplifying Your Busy Life
 
-A new Flutter project.
+Chindi is a user-friendly application designed for busy individuals in Kenya, enabling them to list and delegate errands effortlessly. Whether it's grocery shopping, picking up dry cleaning, or delivering documents, Chindi connects users with reliable runners ready to get tasks done efficiently. The app not only helps users save time and reduce stress but also creates employment opportunities, empowering local communities. With a focus on convenience, reliability, and job creation, Chindi is your go-to solution for managing everyday errands seamlessly.
 
-## Getting Started
+# App Demo Video
 
-This project is a starting point for a Flutter application.
+- [Chindi App Demo](https://drive.google.com/file/d/1abBt_B1kWzED5qFe2DTUGQy-eYRgMEGe/view?usp=sharing)
 
-A few resources to get you started if this is your first Flutter project:
+# Authors
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [Anesu Kafesu](https://github.com/anesukafesu)
+- [Nina Mwangi](https://github.com/NinaMwangi)
+- [S. Samuel Olubode](https://github.com/SundayOlubode)
