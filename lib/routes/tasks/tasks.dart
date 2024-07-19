@@ -1,9 +1,9 @@
-import 'package:chindi_ke/components/tasks_list.dart';
-import 'package:chindi_ke/components/utils/chindi_logo.dart';
-import 'package:chindi_ke/components/custom_text_form_field.dart';
-import 'package:chindi_ke/utils/constants/sizes.dart';
+import 'package:chindi/components/tasks_list.dart';
+import 'package:chindi/components/utils/chindi_logo.dart';
+import 'package:chindi/components/custom_text_form_field.dart';
+import 'package:chindi/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
-import 'package:chindi_ke/utils/constants/tasks.dart';
+import 'package:chindi/utils/constants/tasks.dart';
 
 class Tasks extends StatelessWidget {
   const Tasks({super.key});

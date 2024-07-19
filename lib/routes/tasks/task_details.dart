@@ -1,11 +1,11 @@
-import 'package:chindi_ke/components/todo_list.dart';
-import 'package:chindi_ke/components/user_profile_summary.dart';
-import 'package:chindi_ke/routes/registered_succesfully.dart';
-import 'package:chindi_ke/styles/text.dart';
-import 'package:chindi_ke/utils/helpers/create_location_description.dart';
-import 'package:chindi_ke/utils/helpers/format_currency.dart';
+import 'package:chindi/components/todo_list.dart';
+import 'package:chindi/components/user_profile_summary.dart';
+import 'package:chindi/routes/registered_succesfully.dart';
+import 'package:chindi/styles/text.dart';
+import 'package:chindi/utils/helpers/create_location_description.dart';
+import 'package:chindi/utils/helpers/format_currency.dart';
 import 'package:flutter/material.dart';
-import 'package:chindi_ke/models/task.dart' as m;
+import 'package:chindi/models/task.dart' as m;
 
 class TaskDetails extends StatelessWidget {
   final m.Task task;

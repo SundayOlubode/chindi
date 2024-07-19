@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:chindi_ke/models/user.dart';
+import 'package:chindi/models/user.dart';
 
 class UserProfileSummary extends StatelessWidget {
   final User user;

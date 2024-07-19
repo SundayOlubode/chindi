@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:chindi_ke/models/todo_item.dart';
+import 'package:chindi/models/todo_item.dart';
 
 class TodoList extends StatelessWidget {
   final List<TodoItem> todoList;

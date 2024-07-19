@@ -1,4 +1,4 @@
-import 'package:chindi_ke/utils/constants/sizes.dart';
+import 'package:chindi/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
 import '../../components/profile_image.dart';

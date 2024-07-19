@@ -1,4 +1,4 @@
-import 'package:chindi_ke/models/notification.dart';
+import 'package:chindi/models/notification.dart';
 
 // TODO: Actual notifications from database
 List<Notification> notifications = [

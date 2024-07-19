@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:chindi_ke/models/task.dart';
-import 'package:chindi_ke/components/task_summary.dart';
+import 'package:chindi/models/task.dart';
+import 'package:chindi/components/task_summary.dart';
 
 class TasksList extends StatelessWidget {
   final List<Task> tasks;

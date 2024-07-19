@@ -1,14 +1,14 @@
-import 'package:chindi_ke/components/profile_image.dart';
-import 'package:chindi_ke/routes/auth/sign_in.dart';
-import 'package:chindi_ke/routes/chat.dart';
-import 'package:chindi_ke/routes/notifications.dart';
-import 'package:chindi_ke/routes/tasks/manage_tasks.dart';
-import 'package:chindi_ke/utils/constants/sizes.dart';
-import 'package:chindi_ke/utils/constants/texts.dart';
+import 'package:chindi/components/profile_image.dart';
+import 'package:chindi/routes/auth/sign_in.dart';
+import 'package:chindi/routes/chat.dart';
+import 'package:chindi/routes/notifications.dart';
+import 'package:chindi/routes/tasks/manage_tasks.dart';
+import 'package:chindi/utils/constants/sizes.dart';
+import 'package:chindi/utils/constants/texts.dart';
 import 'package:flutter/material.dart';
-import '../../components/utils/ontap_handler.dart';
-import '../../utils/constants/colors.dart';
-import 'edit_profile.dart';
+import 'package:chindi/components/utils/ontap_handler.dart';
+import 'package:chindi/utils/constants/colors.dart';
+import 'package:chindi/routes/profile/edit_profile.dart';
 
 class UserProfile extends StatelessWidget {
   const UserProfile({super.key});

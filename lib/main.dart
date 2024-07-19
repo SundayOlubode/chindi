@@ -1,5 +1,5 @@
-import 'package:chindi_ke/routes/auth/sign_in.dart';
-import 'package:chindi_ke/utils/theme/theme.dart';
+import 'package:chindi/routes/auth/sign_in.dart';
+import 'package:chindi/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {

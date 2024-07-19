@@ -1,12 +1,12 @@
-import 'package:chindi_ke/components/utils/custom_form.dart';
-import 'package:chindi_ke/components/custom_text_form_field.dart';
-import 'package:chindi_ke/components/utils/heading.dart';
-import 'package:chindi_ke/routes/auth/reset_password.dart';
+import 'package:chindi/components/utils/custom_form.dart';
+import 'package:chindi/components/custom_text_form_field.dart';
+import 'package:chindi/components/utils/heading.dart';
+import 'package:chindi/routes/auth/reset_password.dart';
 import 'package:flutter/material.dart';
-import 'package:chindi_ke/components/utils/primary_button.dart';
+import 'package:chindi/components/utils/primary_button.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:chindi_ke/components/utils/chindi_logo.dart';
-import 'package:chindi_ke/utils/constants/sizes.dart';
+import 'package:chindi/components/utils/chindi_logo.dart';
+import 'package:chindi/utils/constants/sizes.dart';
 
 class VerifyOtp extends StatelessWidget {
   const VerifyOtp({super.key});

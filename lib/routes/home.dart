@@ -1,6 +1,6 @@
-import 'package:chindi_ke/routes/profile/user_profile.dart';
-import 'package:chindi_ke/routes/tasks/list_new_task.dart';
-import 'package:chindi_ke/routes/tasks/tasks.dart';
+import 'package:chindi/routes/profile/user_profile.dart';
+import 'package:chindi/routes/tasks/list_new_task.dart';
+import 'package:chindi/routes/tasks/tasks.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {

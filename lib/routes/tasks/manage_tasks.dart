@@ -1,5 +1,5 @@
-import 'package:chindi_ke/components/tasks_list.dart';
-import 'package:chindi_ke/utils/constants/tasks.dart';
+import 'package:chindi/components/tasks_list.dart';
+import 'package:chindi/utils/constants/tasks.dart';
 import 'package:flutter/material.dart';
 
 class ManageTasks extends StatelessWidget {

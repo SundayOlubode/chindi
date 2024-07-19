@@ -1,5 +1,5 @@
-import 'package:chindi_ke/components/utils/custom_form.dart';
-import 'package:chindi_ke/models/todo_item.dart';
+import 'package:chindi/components/utils/custom_form.dart';
+import 'package:chindi/models/todo_item.dart';
 import 'package:flutter/material.dart';
 
 class ListNewTask extends StatefulWidget {

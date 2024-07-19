@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:chindi_ke/models/formatted_time.dart';
+import 'package:chindi/models/formatted_time.dart';
 
 class TimeDisplay extends StatelessWidget {
   final int time;

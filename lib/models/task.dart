@@ -1,6 +1,6 @@
-import 'package:chindi_ke/models/location.dart';
-import 'package:chindi_ke/models/todo_item.dart';
-import 'package:chindi_ke/models/user.dart';
+import 'package:chindi/models/location.dart';
+import 'package:chindi/models/todo_item.dart';
+import 'package:chindi/models/user.dart';
 
 class Task {
   final String title;

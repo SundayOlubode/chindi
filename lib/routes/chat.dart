@@ -1,6 +1,6 @@
-import 'package:chindi_ke/utils/constants/colors.dart';
-import 'package:chindi_ke/utils/constants/sizes.dart';
-import 'package:chindi_ke/utils/constants/texts.dart';
+import 'package:chindi/utils/constants/colors.dart';
+import 'package:chindi/utils/constants/sizes.dart';
+import 'package:chindi/utils/constants/texts.dart';
 import 'package:flutter/material.dart';
 
 class Chat extends StatelessWidget {

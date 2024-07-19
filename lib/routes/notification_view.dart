@@ -1,6 +1,6 @@
-import 'package:chindi_ke/utils/helpers/create_time_description.dart';
+import 'package:chindi/utils/helpers/create_time_description.dart';
 import 'package:flutter/material.dart';
-import 'package:chindi_ke/models/notification.dart' as n;
+import 'package:chindi/models/notification.dart' as n;
 
 class NotificationView extends StatelessWidget {
   final n.Notification notification;

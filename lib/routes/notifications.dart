@@ -1,9 +1,9 @@
-import 'package:chindi_ke/utils/helpers/create_time_description.dart';
 import 'package:flutter/material.dart';
+import 'package:chindi/utils/helpers/create_time_description.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:chindi_ke/utils/constants/notifications.dart';
-import 'package:chindi_ke/models/notification.dart' as n;
-import 'package:chindi_ke/routes/notification_view.dart';
+import 'package:chindi/utils/constants/notifications.dart';
+import 'package:chindi/models/notification.dart' as n;
+import 'package:chindi/routes/notification_view.dart';
 
 class Notifications extends StatelessWidget {
   const Notifications({super.key});
