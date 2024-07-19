@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "73057783650",
+    "project_id": "chindi-ee56d",
+    "storage_bucket": "chindi-ee56d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:73057783650:android:22d3422d5867dcdce3a63b",
+        "android_client_info": {
+          "package_name": "com.example.chindi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1bVtpQPKvLpeMqVOrvY7aEl1RTe2gTfY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
