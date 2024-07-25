@@ -1,14 +1,17 @@
+import 'package:chindi/utils/validators/validate_email.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:chindi/components/utils/chindi_logo.dart';
 import 'package:chindi/utils/constants/sizes.dart';
-import 'package:chindi/components/custom_text_form_field.dart';
+import 'package:chindi/components/utils/custom_text_form_field.dart';
 import 'package:chindi/components/utils/custom_form.dart';
 import 'package:chindi/components/utils/primary_button.dart';
-import 'package:chindi/routes/auth/verify_otp.dart';
+import 'package:chindi/routes/auth/reset_password.dart';
 
 class ForgotPassword extends StatelessWidget {
-  const ForgotPassword({super.key});
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  ForgotPassword({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,10 +39,13 @@ class ForgotPassword extends StatelessWidget {
                   height: ChindiSizes.spaceBtwSections,
                 ),
                 CustomForm(
+                  formKey: _formKey,
                   children: [
-                    const CustomTextFormField(
+                    CustomTextFormField(
+                      controller: _emailController,
                       label: 'Email Address',
                       prefixIcon: Iconsax.direct,
+                      validator: validateEmail,
                     ),
                     const SizedBox(
                       height: ChindiSizes.spaceBtwItems,
@@ -51,7 +57,7 @@ class ForgotPassword extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const VerifyOtp(),
+                              builder: (context) => ResetPassword(),
                             ),
                           );
                         },

@@ -1,5 +1,5 @@
 import 'package:chindi/components/user_profile_summary.dart';
-import 'package:chindi/styles/text.dart';
+import 'package:chindi/utils/styles/text.dart';
 import 'package:chindi/utils/helpers/create_location_description.dart';
 import 'package:flutter/material.dart';
 import 'package:chindi/models/task.dart' as m;

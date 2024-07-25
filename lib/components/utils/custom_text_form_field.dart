@@ -3,23 +3,32 @@ import 'package:flutter/material.dart';
 class CustomTextFormField extends StatelessWidget {
   final String label;
   final IconData? prefixIcon;
-  final IconData? suffixIcon;
+  final Widget? suffix;
+  final String? Function(String?) validator;
+  final bool? obscured;
+  final TextEditingController controller;
 
   const CustomTextFormField({
     super.key,
     required this.label,
+    required this.validator,
+    required this.controller,
     this.prefixIcon,
-    this.suffixIcon,
+    this.suffix,
+    this.obscured,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: obscured ?? false,
       expands: false,
+      validator: validator,
+      controller: controller,
       decoration: InputDecoration(
         labelText: label,
         prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
-        suffixIcon: suffixIcon != null ? Icon(suffixIcon) : null,
+        suffix: suffix,
       ),
     );
   }

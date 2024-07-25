@@ -1,1 +1,33 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"chindi-ee56d","appId":"1:73057783650:android:22d3422d5867dcdce3a63b","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"chindi-ee56d","configurations":{"android":"1:73057783650:android:22d3422d5867dcdce3a63b"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "chindi-ee56d",
+          "appId": "1:73057783650:android:22d3422d5867dcdce3a63b",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "chindi-ee56d",
+          "configurations": {
+            "android": "1:73057783650:android:22d3422d5867dcdce3a63b"
+          }
+        }
+      }
+    }
+  },
+  "emulators": {
+    "auth": {
+      "port": 9099
+    },
+    "firestore": {
+      "port": 8088
+    },
+    "ui": {
+      "enabled": true
+    },
+    "singleProjectMode": true
+  }
+}

@@ -89,9 +89,7 @@ class Chat extends StatelessWidget {
 }
 
 class _DisplayMessages extends StatelessWidget {
-  const _DisplayMessages({
-    super.key,
-  });
+  const _DisplayMessages();
 
   @override
   Widget build(BuildContext context) {
@@ -140,7 +138,6 @@ class _MessageTile extends StatelessWidget {
   const _MessageTile({
     required this.msgText,
     required this.msgTimestamp,
-    super.key,
   });
 
   @override
@@ -185,7 +182,6 @@ class _MessageOwnTile extends StatelessWidget {
   const _MessageOwnTile({
     required this.msgText,
     required this.msgTimestamp,
-    super.key,
   });
 
   @override

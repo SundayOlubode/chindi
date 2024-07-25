@@ -13,7 +13,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> with TickerProviderStateMixin {
   late TabController _tabController;
 
-  final List<Map<String, dynamic>> _tabs = const [
+  final List<Map<String, dynamic>> _tabs = [
     {
       'title': 'Tasks',
       'showAppBar': false,
@@ -23,7 +23,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     {
       'title': 'Create New Task',
       'showAppBar': true,
-      'widget': ListNewTask(),
+      'widget': const ListNewTask(),
       'showFloatingActionButton': false
     },
     {

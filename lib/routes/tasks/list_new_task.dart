@@ -11,7 +11,7 @@ class ListNewTask extends StatefulWidget {
 
 class _ListNewTaskState extends State<ListNewTask> {
   List<TodoItem> todos = [];
-  final _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   // Focus Node
   final _focus = FocusNode();
@@ -22,7 +22,7 @@ class _ListNewTaskState extends State<ListNewTask> {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
         child: CustomForm(
-          key: _formKey,
+          formKey: _formKey,
           children: [
             TextFormField(
               autofocus: true,

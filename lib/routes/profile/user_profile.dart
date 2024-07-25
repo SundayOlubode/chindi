@@ -1,5 +1,4 @@
 import 'package:chindi/components/profile_image.dart';
-import 'package:chindi/routes/auth/sign_in.dart';
 import 'package:chindi/routes/chat.dart';
 import 'package:chindi/routes/notifications.dart';
 import 'package:chindi/routes/tasks/manage_tasks.dart';
@@ -9,17 +8,23 @@ import 'package:flutter/material.dart';
 import 'package:chindi/components/utils/ontap_handler.dart';
 import 'package:chindi/utils/constants/colors.dart';
 import 'package:chindi/routes/profile/edit_profile.dart';
+import 'package:chindi/providers/user_provider.dart';
+import 'package:provider/provider.dart';
 
 class UserProfile extends StatelessWidget {
-  const UserProfile({super.key});
+  late UserProvider _userProvider;
+  UserProfile({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Current Text theme
+    _userProvider = Provider.of<UserProvider>(context);
     final TextTheme globalTextTheme = Theme.of(context).textTheme;
-    // Current elevated button theme
     final ButtonStyle? globalButtonStyle =
         Theme.of(context).elevatedButtonTheme.style;
+
+    Future<void> handleSignOut() async {
+      _userProvider.signOut();
+    }
 
     return SingleChildScrollView(
       child: Padding(
@@ -30,36 +35,22 @@ class UserProfile extends StatelessWidget {
             Center(
               child: Column(
                 children: [
-                  // USER PROFILE IMAGE
                   const ProfileImage(imagePath: ChindiTexts.anesuImagePath),
                   const SizedBox(height: ChindiSizes.spaceBtwItems),
-
-                  // USER NAME
                   Text(
-                    ChindiTexts.anesuKafesu,
+                    _userProvider.user!.fullName,
                     style: globalTextTheme.titleLarge,
                   ),
-
-                  // USER EMAIL
                   Text(
-                    ChindiTexts.anesuEmail,
+                    _userProvider.user!.email,
                     style: globalTextTheme.bodyMedium,
                   ),
                   const SizedBox(height: ChindiSizes.spaceBtwItems),
-
-                  // LOGOUT BUTTON
                   SizedBox(
                     width: 125,
                     height: 60,
                     child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const SignIn(),
-                          ),
-                        );
-                      },
+                      onPressed: handleSignOut,
                       style: globalButtonStyle?.copyWith(
                         backgroundColor: WidgetStateProperty.all<Color>(
                           ChindiColors.logoutBkgrdColor,
@@ -72,7 +63,7 @@ class UserProfile extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          ChindiTexts.logout,
+                          'Sign out',
                           style: globalTextTheme.bodyMedium?.copyWith(
                             color: ChindiColors.logoutTextColor,
                           ),
@@ -84,12 +75,9 @@ class UserProfile extends StatelessWidget {
               ),
             ),
             const SizedBox(height: ChindiSizes.spaceBtwSections),
-
-            // PROFILE SETTING OPTIONS
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                // EDIT PROFILE
                 OnTapHandler(
                   context: context,
                   dest: const EditProfile(),
@@ -99,8 +87,6 @@ class UserProfile extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: ChindiSizes.spaceBtwItems),
-
-                // NOTIFICATION
                 OnTapHandler(
                   context: context,
                   dest: const Notifications(),
@@ -110,8 +96,6 @@ class UserProfile extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: ChindiSizes.spaceBtwItems),
-
-                // MANAGE TASKS
                 OnTapHandler(
                   context: context,
                   dest: const ManageTasks(),
@@ -121,8 +105,6 @@ class UserProfile extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: ChindiSizes.spaceBtwItems),
-
-                // SUPPORT
                 OnTapHandler(
                   context: context,
                   dest: const Chat(),

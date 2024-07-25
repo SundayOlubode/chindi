@@ -10,4 +10,13 @@ class Location {
     required this.city,
     required this.county,
   });
+
+  factory Location.fromMap(Map<String, String> locationMap) {
+    return Location(
+      streetAddress: locationMap['streetAddress'] as String,
+      suburb: locationMap['suburb'] as String,
+      city: locationMap['city'] as String,
+      county: locationMap['county'] as String,
+    );
+  }
 }

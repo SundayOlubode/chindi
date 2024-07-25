@@ -1,20 +1,60 @@
 import 'package:chindi/components/utils/custom_form.dart';
-import 'package:chindi/components/custom_text_form_field.dart';
+import 'package:chindi/components/utils/custom_text_form_field.dart';
 import 'package:chindi/components/utils/primary_button.dart';
+import 'package:chindi/providers/user_provider.dart';
 import 'package:chindi/routes/auth/forgot_password.dart';
 import 'package:chindi/routes/auth/sign_up.dart';
-import 'package:chindi/routes/home.dart';
 import 'package:chindi/utils/constants/colors.dart';
 import 'package:chindi/components/utils/chindi_logo.dart';
 import 'package:chindi/utils/constants/sizes.dart';
+import 'package:chindi/utils/exceptions/custom_exception.dart';
+import 'package:chindi/utils/validators/validate_email.dart';
+import 'package:chindi/utils/validators/validate_password.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-class SignIn extends StatelessWidget {
+class SignIn extends StatefulWidget {
   const SignIn({super.key});
 
   @override
+  State<SignIn> createState() => _SignInState();
+}
+
+class _SignInState extends State<SignIn> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  late ScaffoldFeatureController Function(SnackBar) _showSnackbar;
+  late UserProvider _userProvider;
+
+  bool _passwordObscured = true;
+  String _errorMessage = '';
+
+  Future<void> handleSignIn() async {
+    if (_formKey.currentState!.validate()) {
+      _showSnackbar(
+        const SnackBar(
+          content: Text('Signing you in'),
+        ),
+      );
+      try {
+        String email = _emailController.text;
+        String password = _passwordController.text;
+
+        await _userProvider.signIn(email, password);
+      } on CustomException catch (e) {
+        setState(() {
+          _errorMessage = e.message;
+        });
+      }
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
+    _userProvider = Provider.of<UserProvider>(context);
+    _showSnackbar = ScaffoldMessenger.of(context).showSnackBar;
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -38,17 +78,34 @@ class SignIn extends StatelessWidget {
                 ),
                 const SizedBox(height: ChindiSizes.spaceBtwSections),
                 CustomForm(
+                  errorMessage: _errorMessage,
+                  formKey: _formKey,
                   children: [
-                    const CustomTextFormField(
+                    CustomTextFormField(
+                      controller: _emailController,
                       label: 'Email Address',
                       prefixIcon: Iconsax.direct,
+                      validator: validateEmail,
                     ),
                     const SizedBox(
                       height: ChindiSizes.spaceBtwItems,
                     ),
-                    const CustomTextFormField(
+                    CustomTextFormField(
+                      controller: _passwordController,
                       label: 'Password',
                       prefixIcon: Iconsax.password_check,
+                      validator: validatePassword,
+                      obscured: _passwordObscured,
+                      suffix: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            _passwordObscured = !_passwordObscured;
+                          });
+                        },
+                        child: Icon(
+                          _passwordObscured ? Iconsax.eye : Iconsax.eye_slash,
+                        ),
+                      ),
                     ),
                     const SizedBox(
                       height: ChindiSizes.spaceBtwItems,
@@ -56,14 +113,7 @@ class SignIn extends StatelessWidget {
                     SizedBox(
                       width: double.infinity,
                       child: PrimaryButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const Home(),
-                            ),
-                          );
-                        },
+                        onPressed: handleSignIn,
                         label: 'Sign in',
                       ),
                     ),
@@ -76,7 +126,7 @@ class SignIn extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const ForgotPassword(),
+                          builder: (context) => ForgotPassword(),
                         ),
                       );
                     },

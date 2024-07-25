@@ -20,7 +20,7 @@ class UserProfileSummary extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              '${user.firstName} ${user.lastName}',
+              user.fullName,
               style: TextStyle(
                 color: Colors.grey.shade800,
               ),

@@ -1,12 +1,14 @@
 import 'package:chindi/components/tasks_list.dart';
 import 'package:chindi/components/utils/chindi_logo.dart';
-import 'package:chindi/components/custom_text_form_field.dart';
+import 'package:chindi/components/utils/custom_text_form_field.dart';
 import 'package:chindi/utils/constants/sizes.dart';
+import 'package:chindi/utils/validators/validate_name.dart';
 import 'package:flutter/material.dart';
 import 'package:chindi/utils/constants/tasks.dart';
 
 class Tasks extends StatelessWidget {
-  const Tasks({super.key});
+  final TextEditingController _searchController = TextEditingController();
+  Tasks({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,17 +17,22 @@ class Tasks extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Row(
+          Row(
             children: [
-              ChindiLogo(
+              const ChindiLogo(
                 height: 40,
                 width: 40,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               Expanded(
-                child: CustomTextFormField(label: 'Search for tasks'),
+                child: CustomTextFormField(
+                  controller: _searchController,
+                  label: 'Search for tasks',
+                  prefixIcon: Icons.search,
+                  validator: validateName,
+                ),
               ),
             ],
           ),

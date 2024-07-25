@@ -19,8 +19,7 @@ Location taskLocation = const Location(
 );
 
 User taskOwner = User(
-  firstName: 'Anesu',
-  lastName: 'Kafesu',
+  fullName: 'Anesu Kafesu',
   email: 'anesukafesu@example.com',
   location: taskLocation,
   uid: '123',
