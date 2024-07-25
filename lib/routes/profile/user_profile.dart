@@ -12,18 +12,17 @@ import 'package:chindi/providers/user_provider.dart';
 import 'package:provider/provider.dart';
 
 class UserProfile extends StatelessWidget {
-  late UserProvider _userProvider;
-  UserProfile({super.key});
+  const UserProfile({super.key});
 
   @override
   Widget build(BuildContext context) {
-    _userProvider = Provider.of<UserProvider>(context);
+    UserProvider userProvider = Provider.of<UserProvider>(context);
     final TextTheme globalTextTheme = Theme.of(context).textTheme;
     final ButtonStyle? globalButtonStyle =
         Theme.of(context).elevatedButtonTheme.style;
 
     Future<void> handleSignOut() async {
-      _userProvider.signOut();
+      userProvider.signOut();
     }
 
     return SingleChildScrollView(
@@ -38,11 +37,11 @@ class UserProfile extends StatelessWidget {
                   const ProfileImage(imagePath: ChindiTexts.anesuImagePath),
                   const SizedBox(height: ChindiSizes.spaceBtwItems),
                   Text(
-                    _userProvider.user!.fullName,
+                    userProvider.user!.fullName,
                     style: globalTextTheme.titleLarge,
                   ),
                   Text(
-                    _userProvider.user!.email,
+                    userProvider.user!.email,
                     style: globalTextTheme.bodyMedium,
                   ),
                   const SizedBox(height: ChindiSizes.spaceBtwItems),
