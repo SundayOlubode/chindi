@@ -1,10 +1,18 @@
-import 'package:chindi/services/database.dart';
+import 'package:chindi/services/firebase_firestore_service.dart';
 import 'package:chindi/utils/exceptions/custom_exception.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 
 class FirebaseAuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  FirebaseDatabaseService database = FirebaseDatabaseService();
+
+  FirebaseAuthService() {
+    if (kDebugMode) {
+      _auth.useAuthEmulator('localhost', 9099);
+    }
+  }
+
+  FirebaseFirestoreService database = FirebaseFirestoreService();
 
   Stream<User?> get user {
     return _auth.authStateChanges();
@@ -63,6 +71,7 @@ class FirebaseAuthService {
       }
       return null;
     } on FirebaseAuthException catch (e) {
+      print(e);
       Map<String, String> errorCodeToMessage = {
         'email-already-in-use': 'An account with email $email already exists.',
         'invalid-email': 'The email address entered is not valid.',
@@ -75,6 +84,7 @@ class FirebaseAuthService {
             'An error occured. Please try again later.',
       );
     } catch (e) {
+      print(e);
       throw CustomException(
         'An error occured. Please try again later.',
       );
@@ -91,5 +101,9 @@ class FirebaseAuthService {
 
   Future<void> signOut() async {
     await _auth.signOut();
+  }
+
+  Future<void> updateDisplayName(String displayName) async {
+    await _auth.currentUser!.updateDisplayName(displayName);
   }
 }

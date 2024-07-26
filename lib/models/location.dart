@@ -19,4 +19,13 @@ class Location {
       county: locationMap['county'] as String,
     );
   }
+
+  Map<String, String> toMap() {
+    return {
+      'streetAddress': streetAddress,
+      'suburb': suburb,
+      'city': city,
+      'county': county,
+    };
+  }
 }

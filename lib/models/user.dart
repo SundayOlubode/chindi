@@ -2,14 +2,14 @@ import 'package:chindi/models/location.dart';
 import 'package:firebase_auth/firebase_auth.dart' as f;
 
 class User {
-  final String fullName;
   final String email;
   final String uid;
-  final Location location;
-  final double rating;
-  final String avatarUrl;
+  String fullName;
+  Location location;
+  double rating;
+  String avatarUrl;
 
-  const User({
+  User({
     required this.fullName,
     required this.email,
     required this.location,

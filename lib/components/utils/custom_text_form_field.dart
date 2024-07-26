@@ -7,12 +7,14 @@ class CustomTextFormField extends StatelessWidget {
   final String? Function(String?) validator;
   final bool? obscured;
   final TextEditingController controller;
+  final int? numberOfLines;
 
   const CustomTextFormField({
     super.key,
     required this.label,
     required this.validator,
     required this.controller,
+    this.numberOfLines = 1,
     this.prefixIcon,
     this.suffix,
     this.obscured,
@@ -29,7 +31,10 @@ class CustomTextFormField extends StatelessWidget {
         labelText: label,
         prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
         suffix: suffix,
+        alignLabelWithHint: true,
       ),
+      maxLines: numberOfLines,
+      minLines: numberOfLines,
     );
   }
 }

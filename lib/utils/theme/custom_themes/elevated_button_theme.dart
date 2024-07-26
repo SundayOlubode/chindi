@@ -10,18 +10,21 @@ class ChindiElevatedButtonTheme {
   static final lightElevatedButtonTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: 0,
-      foregroundColor: ChindiColors.light,
+      foregroundColor: Colors.white,
       backgroundColor: ChindiColors.primary,
       disabledForegroundColor: ChindiColors.darkGrey,
       disabledBackgroundColor: ChindiColors.buttonDisabled,
-      side: BorderSide(color: ChindiColors.primary),
-      padding: const EdgeInsets.symmetric(vertical: ChindiSizes.buttonHeight),
+      padding: const EdgeInsets.all(
+        10,
+      ),
       textStyle: const TextStyle(
-          fontSize: 16,
-          color: ChindiColors.textWhite,
-          fontWeight: FontWeight.w600),
+        fontSize: 16,
+        color: ChindiColors.textWhite,
+        fontWeight: FontWeight.w600,
+      ),
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(ChindiSizes.buttonRadius)),
+        borderRadius: BorderRadius.circular(10),
+      ),
     ),
   );
 
@@ -29,18 +32,26 @@ class ChindiElevatedButtonTheme {
   static final darkElevatedButtonTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: 0,
-      foregroundColor: ChindiColors.light,
+      foregroundColor: Colors.white,
       backgroundColor: ChindiColors.primary,
       disabledForegroundColor: ChindiColors.darkGrey,
       disabledBackgroundColor: ChindiColors.darkerGrey,
-      side: BorderSide(color: ChindiColors.primary),
-      padding: const EdgeInsets.symmetric(vertical: ChindiSizes.buttonHeight),
+      side: BorderSide(
+        color: ChindiColors.primary,
+      ),
+      padding: const EdgeInsets.all(
+        10,
+      ),
       textStyle: const TextStyle(
-          fontSize: 16,
-          color: ChindiColors.textWhite,
-          fontWeight: FontWeight.w600),
+        fontSize: 16,
+        color: ChindiColors.textWhite,
+        fontWeight: FontWeight.w600,
+      ),
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(ChindiSizes.buttonRadius)),
+        borderRadius: BorderRadius.circular(
+          ChindiSizes.buttonRadius,
+        ),
+      ),
     ),
   );
 }

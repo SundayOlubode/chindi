@@ -1,5 +1,5 @@
+import 'package:chindi/components/list_new_task_fab.dart';
 import 'package:chindi/routes/profile/user_profile.dart';
-import 'package:chindi/routes/tasks/list_new_task.dart';
 import 'package:chindi/routes/tasks/tasks.dart';
 import 'package:flutter/material.dart';
 
@@ -10,34 +10,14 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> with TickerProviderStateMixin {
+class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   late TabController _tabController;
-
-  final List<Map<String, dynamic>> _tabs = [
-    {
-      'title': 'Tasks',
-      'showAppBar': false,
-      'widget': Tasks(),
-      'showFloatingActionButton': true
-    },
-    {
-      'title': 'Create New Task',
-      'showAppBar': true,
-      'widget': const ListNewTask(),
-      'showFloatingActionButton': false
-    },
-    {
-      'title': 'Profile',
-      'showAppBar': true,
-      'widget': UserProfile(),
-      'showFloatingActionButton': true
-    },
-  ];
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: _tabs.length, vsync: this);
+    _tabController = TabController(length: 2, vsync: this);
+    _tabController.addListener(_handleTabChange);
   }
 
   @override
@@ -46,79 +26,36 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     _tabController.dispose();
   }
 
+  void _handleTabChange() {
+    setState(() {
+      // Triggering a rebuild
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: _tabs[_tabController.index]['showAppBar']
-            ? AppBar(
-                automaticallyImplyLeading: false,
-                title: Text(_tabs[_tabController.index]['title']),
-                centerTitle: true,
-              )
-            : null,
-        body: TabBarView(
+    return Scaffold(
+      body: SafeArea(
+        child: TabBarView(
           controller: _tabController,
-          children: _tabs.map((tab) => tab['widget'] as Widget).toList(),
+          children: [
+            Tasks(),
+            UserProfile(),
+          ],
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: _tabs[_tabController.index]
-                ['showFloatingActionButton']
-            ? FloatingActionButton.extended(
-                backgroundColor: Theme.of(context).primaryColor,
-                onPressed: () {
-                  _tabController.animateTo(1);
-                  setState(() {});
-                },
-                label: Text(
-                  'List new task',
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.onPrimary,
-                  ),
-                ),
-                icon: Icon(
-                  Icons.add_task,
-                  color: Theme.of(context).colorScheme.onPrimary,
-                ),
-              )
-            : null,
-        bottomNavigationBar: BottomAppBar(
-          height: 60,
-          color: Colors.white,
-          padding: const EdgeInsets.all(0),
-          child: Container(
-            decoration: const BoxDecoration(
-              border: Border(
-                top: BorderSide(color: Color.fromARGB(255, 224, 224, 224)),
-              ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 30.0,
-                vertical: 0,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      _tabController.animateTo(0);
-                      setState(() {});
-                    },
-                    icon: const Icon(Icons.task),
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      _tabController.animateTo(2);
-                      setState(() {});
-                    },
-                    icon: const Icon(Icons.person),
-                  ),
-                ],
-              ),
-            ),
+      ),
+      floatingActionButton:
+          (_tabController.index == 0) ? const ListNewTaskFab() : null,
+      bottomNavigationBar: TabBar(
+        controller: _tabController,
+        tabs: const [
+          Tab(
+            icon: Icon(Icons.task_rounded),
           ),
-        ),
+          Tab(
+            icon: Icon(Icons.person_rounded),
+          ),
+        ],
       ),
     );
   }

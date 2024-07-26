@@ -17,7 +17,7 @@ class CustomForm extends StatelessWidget {
     return Form(
       key: formKey,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           if (errorMessage != null && errorMessage!.isNotEmpty)
             Column(

@@ -1,19 +1,61 @@
-import 'package:chindi/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
+import 'package:chindi/components/utils/custom_text_form_field.dart';
+import 'package:chindi/models/user.dart';
+import 'package:chindi/providers/user_provider.dart';
+import 'package:chindi/utils/constants/sizes.dart';
+import 'package:chindi/utils/validators/validate_name.dart';
+import 'package:chindi/components/profile_image.dart';
+import 'package:chindi/utils/constants/texts.dart';
+import 'dart:io';
 
-import '../../components/profile_image.dart';
-import '../../utils/constants/texts.dart';
-
-class EditProfile extends StatelessWidget {
+class EditProfile extends StatefulWidget {
   const EditProfile({super.key});
 
   @override
+  State<EditProfile> createState() => _EditProfileState();
+}
+
+class _EditProfileState extends State<EditProfile> {
+  final _fullNameController = TextEditingController();
+
+  final ImagePicker _imagePicker = ImagePicker();
+  File? _image;
+
+  Future<void> pickImage(ImageSource source) async {
+    final XFile? image = await _imagePicker.pickImage(
+      source: source,
+    );
+
+    if (image != null) {
+      setState(() {
+        _image = File(image.path);
+      });
+    }
+  }
+
+  Future<void> takePhoto() async {
+    await pickImage(ImageSource.camera);
+  }
+
+  Future<void> selectPhoto() async {
+    await pickImage(ImageSource.gallery);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    // Current Text theme
-    final TextTheme globalTextTheme = Theme.of(context).textTheme;
+    UserProvider userProvider = Provider.of<UserProvider>(context);
+    User? user = userProvider.user!;
+
+    // Prefilling with current values
+    _fullNameController.text = user.fullName;
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text('Edit Profile'),
+        centerTitle: true,
+      ),
       body: GestureDetector(
         onTap: () {
           FocusScope.of(context).unfocus();
@@ -32,89 +74,32 @@ class EditProfile extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Text(ChindiTexts.takePhoto,
-                              style: globalTextTheme.bodyLarge),
-                          Text(ChindiTexts.selectPhoto,
-                              style: globalTextTheme.bodyLarge),
+                          TextButton(
+                            onPressed: takePhoto,
+                            child: const Text('Take Photo'),
+                          ),
+                          TextButton(
+                            onPressed: selectPhoto,
+                            child: const Text('Select Photo'),
+                          ),
                         ],
                       )
                     ],
                   ),
                 ),
-                const SizedBox(height: ChindiSizes.spaceBtwSections),
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: _buildProfileTextField(
-                            ChindiTexts.firstname,
-                            ChindiTexts.anesu,
-                          ),
-                        ),
-                        const SizedBox(width: ChindiSizes.spaceBtwItems),
-                        Expanded(
-                          child: _buildProfileTextField(
-                            ChindiTexts.lastname,
-                            ChindiTexts.kafesu,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: ChindiSizes.spaceBtwItems),
-                    _buildProfileTextField(
-                      ChindiTexts.email,
-                      ChindiTexts.anesuEmail,
-                    ),
-                    const SizedBox(height: ChindiSizes.spaceBtwItems),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: _buildProfileTextField(
-                            ChindiTexts.street,
-                            ChindiTexts.anesuStreet,
-                          ),
-                        ),
-                        const SizedBox(width: ChindiSizes.spaceBtwItems),
-                        Expanded(
-                          child: _buildProfileTextField(
-                            ChindiTexts.village,
-                            ChindiTexts.anesuVillage,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: ChindiSizes.spaceBtwItems),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: _buildProfileTextField(
-                            ChindiTexts.ward,
-                            ChindiTexts.anesuWard,
-                          ),
-                        ),
-                        const SizedBox(width: ChindiSizes.spaceBtwItems),
-                        Expanded(
-                          child: _buildProfileTextField(
-                            ChindiTexts.subCounty,
-                            ChindiTexts.anesuSubCounty,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: ChindiSizes.spaceBtwItems),
-                    _buildProfileTextField(
-                      ChindiTexts.county,
-                      ChindiTexts.anesuCounty,
-                    ),
-                  ],
+                const SizedBox(height: ChindiSizes.spaceBtwItems),
+                CustomTextFormField(
+                  label: 'Full Name',
+                  validator: validateName,
+                  controller: _fullNameController,
                 ),
-                const SizedBox(height: ChindiSizes.spaceBtwSections),
+                const SizedBox(height: ChindiSizes.spaceBtwItems),
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     child: const Text(ChindiTexts.saveProfile),
                   ),
                 )
@@ -123,20 +108,6 @@ class EditProfile extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  TextField _buildProfileTextField(String labelText, String hintText) {
-    return TextField(
-      decoration: InputDecoration(
-        labelText: labelText,
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        hintText: hintText,
-      ),
-      keyboardType: TextInputType.multiline,
-      maxLines: null, // Allow the TextField to expand vertically as needed
-      minLines: 1, // Set a minimum number of visible lines
-      scrollController: ScrollController(),
     );
   }
 }

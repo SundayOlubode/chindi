@@ -1,5 +1,6 @@
 import 'package:chindi/providers/user_provider.dart';
 import 'package:chindi/routes/home.dart';
+import 'package:chindi/wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
@@ -12,6 +13,7 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
   runApp(const App());
 }
 
@@ -28,18 +30,11 @@ class App extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Chindi',
+        debugShowCheckedModeBanner: false,
         themeMode: ThemeMode.system,
         theme: ChindiAppTheme.lightTheme,
         darkTheme: ChindiAppTheme.darkTheme,
-        home: Consumer<UserProvider>(
-          builder: (BuildContext context, UserProvider userProvider, _) {
-            if (userProvider.user == null) {
-              return const SignIn();
-            } else {
-              return const Home();
-            }
-          },
-        ),
+        home: const Wrapper(),
       ),
     );
   }

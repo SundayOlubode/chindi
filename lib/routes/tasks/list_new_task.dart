@@ -1,5 +1,8 @@
+import 'package:chindi/components/todo_list_input.dart';
 import 'package:chindi/components/utils/custom_form.dart';
+import 'package:chindi/components/utils/custom_text_form_field.dart';
 import 'package:chindi/models/todo_item.dart';
+import 'package:chindi/utils/validators/validate_name.dart';
 import 'package:flutter/material.dart';
 
 class ListNewTask extends StatefulWidget {
@@ -10,123 +13,102 @@ class ListNewTask extends StatefulWidget {
 }
 
 class _ListNewTaskState extends State<ListNewTask> {
-  List<TodoItem> todos = [];
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final _titleController = TextEditingController();
+  final _descriptionController = TextEditingController();
+  final _streetAddressController = TextEditingController();
+  final _suburbController = TextEditingController();
+  final _cityController = TextEditingController();
+  final _countyController = TextEditingController();
 
-  // Focus Node
-  final _focus = FocusNode();
+  List<TodoItem> _todos = [];
+
+  void addTodo() {
+    setState(() {
+      _todos.add(TodoItem());
+    });
+  }
+
+  void deleteTodo(int index) {
+    setState(() {
+      _todos.removeAt(index);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('List new task'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: CustomForm(
           formKey: _formKey,
           children: [
-            TextFormField(
-              autofocus: true,
-              focusNode: _focus,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Title',
-              ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter Title';
-                }
-                return null;
-              },
-              maxLength: 30,
+            CustomTextFormField(
+              label: 'Title',
+              controller: _titleController,
+              validator: validateName,
             ),
-            const SizedBox(height: 30),
-            TextFormField(
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Location',
-              ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter Location';
-                }
-                return null;
-              },
-              maxLength: 50,
+            const SizedBox(height: 10),
+            CustomTextFormField(
+              label: 'Description',
+              numberOfLines: 5,
+              controller: _descriptionController,
+              validator: validateName,
             ),
-            const SizedBox(height: 30),
-            TextFormField(
-              maxLines: 5,
-              minLines: 5,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Description',
-              ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter Task Description';
-                }
-                return null;
-              },
-              maxLength: 250,
+            const SizedBox(height: 10),
+            CustomTextFormField(
+              label: 'Street Address',
+              controller: _streetAddressController,
+              validator: validateName,
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 10),
+            CustomTextFormField(
+              label: 'Suburb',
+              controller: _suburbController,
+              validator: validateName,
+            ),
+            const SizedBox(height: 10),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text('Todo List'),
-                TextButton(
-                  onPressed: () {
-                    setState(() {
-                      todos.add(TodoItem());
-                    });
-                  },
-                  child: const Text('Add todo'),
-                ),
-              ],
-            ),
-            ConstrainedBox(
-              constraints: const BoxConstraints(
-                maxHeight: double.minPositive,
-              ),
-              child: ListView.builder(
-                itemCount: todos.length,
-                itemBuilder: (context, index) {
-                  return TextField(onChanged: (String value) {
-                    setState(() {
-                      todos[index].task = value;
-                    });
-                  });
-                },
-              ),
-            ),
-
-            // TextFormField(
-            //   decoration: const InputDecoration(
-            //     border: OutlineInputBorder(),
-            //     labelText: 'To-do List',
-            //   ),
-            //   validator: (value) {
-            //     if (value == null || value.isEmpty) {
-            //       return 'Please enter To-do List';
-            //     }
-            //     return null;
-            //   },
-            //   maxLength: 500,
-            // ),
-            const SizedBox(height: 30),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {}
-                  },
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: const Size(120, 50),
+                Expanded(
+                  child: CustomTextFormField(
+                    label: 'City',
+                    controller: _cityController,
+                    validator: validateName,
                   ),
-                  child: const Text('Create Job'),
                 ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: CustomTextFormField(
+                    label: 'County',
+                    controller: _countyController,
+                    validator: validateName,
+                  ),
+                )
               ],
+            ),
+            const SizedBox(height: 10),
+            TodoListInput(
+              todos: _todos,
+              addTodo: addTodo,
+              deleteTodo: deleteTodo,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {}
+              },
+              style: ElevatedButton.styleFrom(
+                minimumSize: const Size(120, 50),
+              ),
+              child: const Text('Create Job'),
             ),
           ],
         ),
