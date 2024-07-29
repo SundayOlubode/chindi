@@ -1,7 +1,7 @@
 import 'package:chindi/models/task.dart';
+import 'package:chindi/models/task_registration.dart';
 import 'package:chindi/models/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 
 class FirebaseFirestoreService {
   Map<String, User> _usersMap = {};
@@ -9,6 +9,8 @@ class FirebaseFirestoreService {
       FirebaseFirestore.instance.collection('users');
   final CollectionReference _tasksCollection =
       FirebaseFirestore.instance.collection('tasks');
+  final CollectionReference _taskRegistrationsCollection =
+      FirebaseFirestore.instance.collection('taskRegistrations');
 
   FirebaseFirestoreService() {
     // if (kDebugMode) {
@@ -28,7 +30,7 @@ class FirebaseFirestoreService {
   List<Task> snapshotToTasks(QuerySnapshot<Map<String, dynamic>> snapshot) {
     return snapshot.docs.map((doc) {
       Map<String, dynamic> taskData = doc.data();
-      taskData['id'] = doc.id;
+      taskData['uid'] = doc.id;
       taskData['owner'] = _usersMap[taskData['ownerId']]!.toMap();
       return Task.fromMap(taskData);
     }).toList();
@@ -73,5 +75,63 @@ class FirebaseFirestoreService {
 
     // Add the task map to the tasks collection
     await _tasksCollection.add(taskMap);
+  }
+
+  Future<void> registerForTask(Task task, User user) async {
+    _taskRegistrationsCollection.add({
+      'taskId': task.uid,
+      'userId': user.uid,
+    });
+  }
+
+  Future<List<TaskRegistration>> getTaskRegistrationsForTask(Task task) async {
+    var snapshot = await _taskRegistrationsCollection
+        .where(
+          'taskId',
+          isEqualTo: task.uid,
+        )
+        .get();
+    List<TaskRegistration> taskRegistrations = [];
+
+    for (var doc in snapshot.docs) {
+      var registrationData = doc.data() as Map<String, dynamic>;
+      registrationData['uid'] = doc.id;
+      registrationData['task'] = task.toMap();
+      registrationData['registrant'] =
+          _usersMap[registrationData['userId']]!.toMap();
+      taskRegistrations.add(TaskRegistration.fromMap(registrationData));
+    }
+
+    return taskRegistrations;
+  }
+
+  Future<List<Task>> getTasksPerformedByUser(User user) async {
+    var snapshot = await _tasksCollection
+        .where(
+          'assignedToId',
+          isEqualTo: user.uid,
+        )
+        .get();
+    return snapshot.docs.map((doc) {
+      Map<String, dynamic> taskData = doc.data() as Map<String, dynamic>;
+      taskData['uid'] = doc.id;
+      taskData['owner'] = _usersMap[taskData['ownerId']]!.toMap();
+      return Task.fromMap(taskData);
+    }).toList();
+  }
+
+  Future<List<Task>> getTasksOwnedByUser(User user) async {
+    var snapshot = await _tasksCollection
+        .where(
+          'ownerId',
+          isEqualTo: user.uid,
+        )
+        .get();
+    return snapshot.docs.map((doc) {
+      Map<String, dynamic> taskData = doc.data() as Map<String, dynamic>;
+      taskData['uid'] = doc.id;
+      taskData['owner'] = _usersMap[taskData['ownerId']]!.toMap();
+      return Task.fromMap(taskData);
+    }).toList();
   }
 }

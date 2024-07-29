@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:chindi/models/todo_item.dart';
 
-class TodoList extends StatelessWidget {
+class GeneralTodoList extends StatelessWidget {
   final List<TodoItem> todoList;
-  const TodoList({super.key, required this.todoList});
+  const GeneralTodoList({super.key, required this.todoList});
 
   @override
   Widget build(BuildContext context) {

@@ -1,15 +1,11 @@
 import 'package:chindi/components/utils/custom_form.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:chindi/components/utils/custom_text_form_field.dart';
 import 'package:chindi/models/user.dart';
 import 'package:chindi/providers/user_provider.dart';
 import 'package:chindi/utils/constants/sizes.dart';
 import 'package:chindi/utils/validators/validate_name.dart';
-import 'package:chindi/components/profile_image.dart';
-import 'package:chindi/utils/constants/texts.dart';
-// import 'dart:io';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({super.key});

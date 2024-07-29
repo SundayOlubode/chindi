@@ -28,6 +28,7 @@ User taskOwner = User(
 );
 
 Task task = Task(
+  uid: '123',
   title: 'Kitchen Cleaning',
   pay: 800,
   description:

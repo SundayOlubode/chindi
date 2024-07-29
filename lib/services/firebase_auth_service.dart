@@ -1,7 +1,7 @@
 import 'package:chindi/services/firebase_firestore_service.dart';
 import 'package:chindi/utils/exceptions/custom_exception.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
+// import 'package:flutter/foundation.dart';
 
 class FirebaseAuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
