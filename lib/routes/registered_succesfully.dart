@@ -2,8 +2,7 @@ import 'package:awesome_ripple_animation/awesome_ripple_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:chindi/utils/constants/texts.dart';
 import 'package:chindi/components/utils/primary_button.dart';
-import '../../utils/constants/sizes.dart';
-import 'package:chindi/routes/home.dart';
+import 'package:chindi/utils/constants/sizes.dart';
 
 class RegisteredSuccesfully extends StatelessWidget {
   const RegisteredSuccesfully({super.key});

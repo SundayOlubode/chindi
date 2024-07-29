@@ -1,4 +1,3 @@
-import 'package:chindi/models/task.dart';
 import 'package:chindi/providers/user_provider.dart';
 import 'package:chindi/services/firebase_firestore_service.dart';
 import 'package:chindi/wrapper.dart';

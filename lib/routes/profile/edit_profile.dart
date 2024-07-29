@@ -1,3 +1,4 @@
+import 'package:chindi/components/utils/custom_form.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -18,38 +19,13 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
-  final _fullNameController = TextEditingController();
-
-  // final ImagePicker _imagePicker = ImagePicker();
-  // File? _image;
-
-  Future<void> pickImage(ImageSource source) async {
-    // final XFile? image = await _imagePicker.pickImage(
-    //   source: source,
-    // );
-
-    // if (image != null) {
-    //   setState(() {
-    //     _image = File(image.path);
-    //   });
-    // }
-  }
-
-  Future<void> takePhoto() async {
-    await pickImage(ImageSource.camera);
-  }
-
-  Future<void> selectPhoto() async {
-    await pickImage(ImageSource.gallery);
-  }
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  String _fullName = '';
 
   @override
   Widget build(BuildContext context) {
     UserProvider userProvider = Provider.of<UserProvider>(context);
     User? user = userProvider.user!;
-
-    // Prefilling with current values
-    _fullNameController.text = user.fullName;
 
     return Scaffold(
       appBar: AppBar(
@@ -59,34 +35,17 @@ class _EditProfileState extends State<EditProfile> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(ChindiSizes.defaultSpace),
-          child: Column(
+          child: CustomForm(
+            formKey: _formKey,
             children: [
-              SizedBox(
-                width: 200,
-                child: Column(
-                  children: <Widget>[
-                    const SizedBox(height: ChindiSizes.spaceBtwItems),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        TextButton(
-                          onPressed: takePhoto,
-                          child: const Text('Take Photo'),
-                        ),
-                        TextButton(
-                          onPressed: selectPhoto,
-                          child: const Text('Select Photo'),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              ),
               const SizedBox(height: ChindiSizes.spaceBtwItems),
               CustomTextFormField(
                 label: 'Full Name',
                 validator: validateName,
-                controller: _fullNameController,
+                initialValue: user.fullName,
+                onChanged: (e) {
+                  _fullName = e;
+                },
               ),
               const SizedBox(height: ChindiSizes.spaceBtwItems),
               SizedBox(
@@ -95,7 +54,7 @@ class _EditProfileState extends State<EditProfile> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  child: const Text(ChindiTexts.saveProfile),
+                  child: const Text('Save'),
                 ),
               )
             ],
