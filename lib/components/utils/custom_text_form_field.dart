@@ -6,15 +6,19 @@ class CustomTextFormField extends StatelessWidget {
   final Widget? suffix;
   final String? Function(String?) validator;
   final bool? obscured;
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final int? numberOfLines;
+  final String? initialValue;
+  final void Function(String)? onChanged;
 
   const CustomTextFormField({
     super.key,
     required this.label,
     required this.validator,
-    required this.controller,
+    this.onChanged,
+    this.controller,
     this.numberOfLines = 1,
+    this.initialValue,
     this.prefixIcon,
     this.suffix,
     this.obscured,
@@ -23,10 +27,12 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: initialValue,
       obscureText: obscured ?? false,
       expands: false,
       validator: validator,
       controller: controller,
+      onChanged: onChanged,
       decoration: InputDecoration(
         labelText: label,
         prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,

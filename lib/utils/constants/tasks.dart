@@ -21,7 +21,7 @@ Location taskLocation = const Location(
 User taskOwner = User(
   fullName: 'Anesu Kafesu',
   email: 'anesukafesu@example.com',
-  location: taskLocation,
+  address: taskLocation,
   uid: '123',
   rating: 4.5,
   avatarUrl: 'https://silver-sable-868cb1.netlify.app/team/anesu-kafesu.jpg',

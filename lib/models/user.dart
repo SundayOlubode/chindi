@@ -1,36 +1,41 @@
 import 'package:chindi/models/location.dart';
-import 'package:firebase_auth/firebase_auth.dart' as f;
 
 class User {
-  final String email;
+  final String? email;
   final String uid;
   String fullName;
-  Location location;
+  Location address;
   double rating;
   String avatarUrl;
 
   User({
     required this.fullName,
-    required this.email,
-    required this.location,
+    this.email,
+    required this.address,
     required this.uid,
     required this.rating,
     required this.avatarUrl,
   });
 
-  factory User.fromFirebase(
-    f.User firebaseUser,
-    Map<String, dynamic> userData,
-  ) {
+  factory User.fromMap(Map<String, dynamic> user) {
     return User(
-      uid: firebaseUser.uid,
-      fullName: firebaseUser.displayName ?? '',
-      email: firebaseUser.email ?? '',
-      avatarUrl: firebaseUser.photoURL ?? '',
-      location: Location.fromMap(
-        Map<String, String>.from(userData['address']),
-      ),
-      rating: userData['rating'],
+      uid: user['uid'],
+      fullName: user['fullName'],
+      email: user['email'],
+      address: Location.fromMap(user['address']),
+      rating: user['rating'],
+      avatarUrl: user['avatarUrl'],
     );
+  }
+
+  Map toMap() {
+    return {
+      'uid': uid,
+      'fullName': fullName,
+      'email': email,
+      'address': address.toMap(),
+      'rating': rating,
+      'avatarUrl': avatarUrl,
+    };
   }
 }

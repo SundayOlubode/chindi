@@ -7,11 +7,22 @@ class UserProfileSummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget avatar = user.avatarUrl.isEmpty
+        ? const CircleAvatar(
+            radius: 15,
+            child: Icon(
+              Icons.person_rounded,
+            ),
+          )
+        : CircleAvatar(
+            radius: 15,
+            backgroundImage: NetworkImage(user.avatarUrl),
+          );
     return Row(
       children: [
         CircleAvatar(
           radius: 15,
-          foregroundImage: NetworkImage(user.avatarUrl),
+          child: avatar,
         ),
         const SizedBox(
           width: 10,

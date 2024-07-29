@@ -3,16 +3,16 @@
     "platforms": {
       "android": {
         "default": {
-          "projectId": "chindi-ee56d",
-          "appId": "1:73057783650:android:22d3422d5867dcdce3a63b",
+          "projectId": "chindi-9bc2f",
+          "appId": "1:1039983865275:android:dd65d76fd5f2f5de61e89e",
           "fileOutput": "android/app/google-services.json"
         }
       },
       "dart": {
         "lib/firebase_options.dart": {
-          "projectId": "chindi-ee56d",
+          "projectId": "chindi-9bc2f",
           "configurations": {
-            "android": "1:73057783650:android:22d3422d5867dcdce3a63b"
+            "android": "1:1039983865275:android:dd65d76fd5f2f5de61e89e"
           }
         }
       }
@@ -24,6 +24,10 @@
     },
     "firestore": {
       "port": 8088
+    },
+    "storage": {
+      "port": 7077,
+      "rules": "storage.rules"
     },
     "ui": {
       "enabled": true

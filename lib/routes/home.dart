@@ -32,6 +32,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     });
   }
 
+  bool _showFab() {
+    return _tabController.index == 0;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,8 +48,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           ],
         ),
       ),
-      floatingActionButton:
-          (_tabController.index == 0) ? const ListNewTaskFab() : null,
+      floatingActionButton: _showFab() ? const ListNewTaskFab() : null,
       bottomNavigationBar: TabBar(
         controller: _tabController,
         tabs: const [

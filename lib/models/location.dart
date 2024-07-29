@@ -11,7 +11,12 @@ class Location {
     required this.county,
   });
 
-  factory Location.fromMap(Map<String, String> locationMap) {
+  @override
+  String toString() {
+    return '$streetAddress, $suburb, $city, $county';
+  }
+
+  factory Location.fromMap(Map<String, dynamic> locationMap) {
     return Location(
       streetAddress: locationMap['streetAddress'] as String,
       suburb: locationMap['suburb'] as String,

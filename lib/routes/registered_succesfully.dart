@@ -51,11 +51,9 @@ class RegisteredSuccesfully extends StatelessWidget {
             const SizedBox(height: 20),
             PrimaryButton(
               onPressed: () {
-                Navigator.push(
+                Navigator.popUntil(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => const Home(),
-                  ),
+                  (route) => route.isFirst,
                 );
               },
               label: 'More jobs',

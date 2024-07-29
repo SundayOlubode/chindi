@@ -1,10 +1,11 @@
 import 'package:chindi/components/tasks_list.dart';
 import 'package:chindi/components/utils/chindi_logo.dart';
 import 'package:chindi/components/utils/custom_text_form_field.dart';
+import 'package:chindi/models/task.dart';
 import 'package:chindi/utils/constants/sizes.dart';
 import 'package:chindi/utils/validators/validate_name.dart';
 import 'package:flutter/material.dart';
-import 'package:chindi/utils/constants/tasks.dart';
+import 'package:provider/provider.dart';
 
 class Tasks extends StatelessWidget {
   final TextEditingController _searchController = TextEditingController();
@@ -12,6 +13,7 @@ class Tasks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Task>? tasks = Provider.of<List<Task>?>(context);
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -49,7 +51,16 @@ class Tasks extends StatelessWidget {
           const SizedBox(
             height: 15,
           ),
-          TasksList(tasks: tasks),
+          if (tasks == null)
+            const Center(
+              child: CircularProgressIndicator(),
+            )
+          else if (tasks.isEmpty)
+            const Center(
+              child: Text('No tasks found'),
+            )
+          else
+            TasksList(tasks: tasks),
         ],
       ),
     );

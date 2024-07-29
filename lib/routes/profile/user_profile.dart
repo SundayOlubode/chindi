@@ -3,6 +3,7 @@ import 'package:chindi/routes/chat.dart';
 import 'package:chindi/routes/edit_default_address.dart';
 import 'package:chindi/routes/notifications.dart';
 import 'package:chindi/routes/tasks/manage_tasks.dart';
+import 'package:chindi/routes/update_profile_picture.dart';
 import 'package:chindi/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:chindi/routes/profile/edit_profile.dart';
@@ -32,6 +33,10 @@ class UserProfile extends StatelessWidget {
     {
       'title': 'Edit Default Address',
       'widget': const EditDefaultAddress(),
+    },
+    {
+      'title': 'Update Profile Picture',
+      'widget': const UpdateProfilePicture(),
     }
   ];
 
@@ -56,7 +61,7 @@ class UserProfile extends StatelessWidget {
                     style: globalTextTheme.titleLarge,
                   ),
                   Text(
-                    userProvider.user!.email,
+                    userProvider.user!.email!,
                     style: globalTextTheme.bodyMedium,
                   ),
                 ],

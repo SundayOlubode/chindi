@@ -8,7 +8,7 @@ import 'package:chindi/utils/constants/sizes.dart';
 import 'package:chindi/utils/validators/validate_name.dart';
 import 'package:chindi/components/profile_image.dart';
 import 'package:chindi/utils/constants/texts.dart';
-import 'dart:io';
+// import 'dart:io';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({super.key});
@@ -20,19 +20,19 @@ class EditProfile extends StatefulWidget {
 class _EditProfileState extends State<EditProfile> {
   final _fullNameController = TextEditingController();
 
-  final ImagePicker _imagePicker = ImagePicker();
-  File? _image;
+  // final ImagePicker _imagePicker = ImagePicker();
+  // File? _image;
 
   Future<void> pickImage(ImageSource source) async {
-    final XFile? image = await _imagePicker.pickImage(
-      source: source,
-    );
+    // final XFile? image = await _imagePicker.pickImage(
+    //   source: source,
+    // );
 
-    if (image != null) {
-      setState(() {
-        _image = File(image.path);
-      });
-    }
+    // if (image != null) {
+    //   setState(() {
+    //     _image = File(image.path);
+    //   });
+    // }
   }
 
   Future<void> takePhoto() async {
@@ -56,55 +56,49 @@ class _EditProfileState extends State<EditProfile> {
         title: const Text('Edit Profile'),
         centerTitle: true,
       ),
-      body: GestureDetector(
-        onTap: () {
-          FocusScope.of(context).unfocus();
-        },
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(ChindiSizes.defaultSpace),
-            child: Column(
-              children: [
-                SizedBox(
-                  width: 200,
-                  child: Column(
-                    children: <Widget>[
-                      const ProfileImage(imagePath: ChindiTexts.anesuImagePath),
-                      const SizedBox(height: ChindiSizes.spaceBtwItems),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          TextButton(
-                            onPressed: takePhoto,
-                            child: const Text('Take Photo'),
-                          ),
-                          TextButton(
-                            onPressed: selectPhoto,
-                            child: const Text('Select Photo'),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(ChindiSizes.defaultSpace),
+          child: Column(
+            children: [
+              SizedBox(
+                width: 200,
+                child: Column(
+                  children: <Widget>[
+                    const SizedBox(height: ChindiSizes.spaceBtwItems),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        TextButton(
+                          onPressed: takePhoto,
+                          child: const Text('Take Photo'),
+                        ),
+                        TextButton(
+                          onPressed: selectPhoto,
+                          child: const Text('Select Photo'),
+                        ),
+                      ],
+                    )
+                  ],
                 ),
-                const SizedBox(height: ChindiSizes.spaceBtwItems),
-                CustomTextFormField(
-                  label: 'Full Name',
-                  validator: validateName,
-                  controller: _fullNameController,
+              ),
+              const SizedBox(height: ChindiSizes.spaceBtwItems),
+              CustomTextFormField(
+                label: 'Full Name',
+                validator: validateName,
+                controller: _fullNameController,
+              ),
+              const SizedBox(height: ChindiSizes.spaceBtwItems),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text(ChindiTexts.saveProfile),
                 ),
-                const SizedBox(height: ChindiSizes.spaceBtwItems),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: const Text(ChindiTexts.saveProfile),
-                  ),
-                )
-              ],
-            ),
+              )
+            ],
           ),
         ),
       ),

@@ -7,9 +7,9 @@ class FirebaseAuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   FirebaseAuthService() {
-    if (kDebugMode) {
-      _auth.useAuthEmulator('localhost', 9099);
-    }
+    // if (kDebugMode) {
+    //   _auth.useAuthEmulator('localhost', 9099);
+    // }
   }
 
   FirebaseFirestoreService database = FirebaseFirestoreService();
@@ -18,7 +18,7 @@ class FirebaseAuthService {
     return _auth.authStateChanges();
   }
 
-  Future<User?> signInWithEmailAndPassword(
+  Future<User> signInWithEmailAndPassword(
     String email,
     String password,
   ) async {
@@ -28,7 +28,7 @@ class FirebaseAuthService {
         password: password,
       );
 
-      return userCredential.user;
+      return userCredential.user!;
     } on FirebaseAuthException catch (e) {
       Map<String, String> errorCodeToMessage = {
         'user-not-found': 'The user with email: $email was not found.',
@@ -49,29 +49,17 @@ class FirebaseAuthService {
     }
   }
 
-  Future<User?> signUpWithEmailAndPassword(
-    String fullName,
+  Future<User> signUpWithEmailAndPassword(
     String email,
     String password,
   ) async {
     try {
-      // Create user with specified email and password
-      UserCredential userCredential =
-          await _auth.createUserWithEmailAndPassword(
+      UserCredential credential = await _auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
-
-      // If user creation was successful
-      if (userCredential.user != null) {
-        // Update the user's display name
-        await userCredential.user!.updateDisplayName(fullName);
-
-        return userCredential.user!;
-      }
-      return null;
+      return credential.user!;
     } on FirebaseAuthException catch (e) {
-      print(e);
       Map<String, String> errorCodeToMessage = {
         'email-already-in-use': 'An account with email $email already exists.',
         'invalid-email': 'The email address entered is not valid.',
@@ -84,7 +72,6 @@ class FirebaseAuthService {
             'An error occured. Please try again later.',
       );
     } catch (e) {
-      print(e);
       throw CustomException(
         'An error occured. Please try again later.',
       );

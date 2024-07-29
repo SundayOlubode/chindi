@@ -1,10 +1,10 @@
+import 'package:chindi/models/task.dart';
 import 'package:chindi/providers/user_provider.dart';
-import 'package:chindi/routes/home.dart';
+import 'package:chindi/services/firebase_firestore_service.dart';
 import 'package:chindi/wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
-import 'package:chindi/routes/auth/sign_in.dart';
 import 'package:chindi/utils/theme/theme.dart';
 import 'package:chindi/firebase_options.dart';
 
@@ -26,6 +26,9 @@ class App extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (_) => UserProvider(),
+        ),
+        Provider.value(
+          value: FirebaseFirestoreService(),
         ),
       ],
       child: MaterialApp(
