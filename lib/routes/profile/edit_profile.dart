@@ -16,7 +16,7 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  String _fullName = '';
+  // String _fullName = '';
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class _EditProfileState extends State<EditProfile> {
                 validator: validateName,
                 initialValue: user.fullName,
                 onChanged: (e) {
-                  _fullName = e;
+                  // _fullName = e;
                 },
               ),
               const SizedBox(height: ChindiSizes.spaceBtwItems),

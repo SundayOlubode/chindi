@@ -21,7 +21,7 @@ class _ListNewTaskState extends State<ListNewTask> {
   final Map<String, dynamic> _taskDetails = {
     'title': '',
     'description': '',
-    'toDoList': '',
+    'todoList': '',
     'pay': 0,
     'location': {
       'streetAddress': '',
@@ -63,21 +63,21 @@ class _ListNewTaskState extends State<ListNewTask> {
       );
 
       // Add the owner to the task details
-      _taskDetails['owner'] = user.toMap();
+      _taskDetails['ownerId'] = user.uid;
 
       // Convert pay to an integer
       _taskDetails['pay'] = int.parse(_taskDetails['pay']);
 
       // Convert todo to a map
       List<Map<String, dynamic>> todoList = List<Map<String, dynamic>>.from(
-        _taskDetails['toDoList']
+        _taskDetails['todoList']
             .split('\n')
             .map((String todo) => {'task': todo, 'done': false})
             .toList(),
       );
 
       // Add the todo list to the task details
-      _taskDetails['toDoList'] = todoList;
+      _taskDetails['todoList'] = todoList;
 
       // Create the task
       Task task = Task.fromMap(_taskDetails);
@@ -138,7 +138,7 @@ class _ListNewTaskState extends State<ListNewTask> {
                   return null;
                 },
                 numberOfLines: 5,
-                onChanged: (String value) => _taskDetails['toDoList'] = value,
+                onChanged: (String value) => _taskDetails['todoList'] = value,
               ),
               const SizedBox(
                 height: 30,

@@ -1,3 +1,4 @@
+import 'package:chindi/components/user_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:chindi/models/user.dart';
 
@@ -7,22 +8,11 @@ class UserProfileSummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget avatar = user.avatarUrl.isEmpty
-        ? const CircleAvatar(
-            radius: 15,
-            child: Icon(
-              Icons.person_rounded,
-            ),
-          )
-        : CircleAvatar(
-            radius: 15,
-            backgroundImage: NetworkImage(user.avatarUrl),
-          );
     return Row(
       children: [
         CircleAvatar(
           radius: 15,
-          child: avatar,
+          child: UserAvatar(url: user.avatarUrl),
         ),
         const SizedBox(
           width: 10,

@@ -1,5 +1,7 @@
 import 'package:chindi/components/sign_out_button.dart';
-import 'package:chindi/routes/chat.dart';
+import 'package:chindi/models/location.dart';
+import 'package:chindi/models/user.dart';
+import 'package:chindi/routes/chat_display.dart';
 import 'package:chindi/routes/edit_default_address.dart';
 import 'package:chindi/routes/notifications.dart';
 import 'package:chindi/routes/tasks/manage_tasks.dart';
@@ -15,7 +17,7 @@ class UserProfile extends StatelessWidget {
 
   final List<Map<String, dynamic>> _links = [
     {
-      'title': 'Edit Profile',
+      'title': 'Edit Name',
       'widget': const EditProfile(),
     },
     {
@@ -26,10 +28,24 @@ class UserProfile extends StatelessWidget {
       'title': 'Manage Tasks',
       'widget': const ManageTasks(),
     },
-    {
-      'title': 'Contact Support',
-      'widget': const Chat(),
-    },
+    // {
+    //   'title': 'Contact Support',
+    //   'widget': ChatDisplay(
+    //     secondaryUser: User(
+    //       uid: '123',
+    //       fullName: 'John Doe',
+    //       email: 'johndoe@example.com',
+    //       avatarUrl: '',
+    //       address: const Location(
+    //         streetAddress: '123 Main Street',
+    //         suburb: 'Main',
+    //         city: 'Harare',
+    //         county: 'Harare',
+    //       ),
+    //       rating: 0.0,
+    //     ),
+    //   ),
+    // },
     {
       'title': 'Edit Default Address',
       'widget': const EditDefaultAddress(),
@@ -61,7 +77,7 @@ class UserProfile extends StatelessWidget {
                     style: globalTextTheme.titleLarge,
                   ),
                   Text(
-                    userProvider.user!.email!,
+                    userProvider.user!.email,
                     style: globalTextTheme.bodyMedium,
                   ),
                 ],

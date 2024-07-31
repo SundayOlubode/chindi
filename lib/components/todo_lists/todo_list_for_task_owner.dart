@@ -23,7 +23,7 @@ class TodoListForTaskOwner extends StatelessWidget {
           }
 
           var taskMap = Map<String, dynamic>.from(snapshot.data!.data()!);
-          var todoList = taskMap['toDoList']
+          var todoList = taskMap['todoList']
               .map((todoItemMap) => TodoItem.fromMap(todoItemMap))
               .toList();
 

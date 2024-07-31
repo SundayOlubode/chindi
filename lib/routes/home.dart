@@ -1,4 +1,5 @@
 import 'package:chindi/components/list_new_task_fab.dart';
+import 'package:chindi/routes/chats_list.dart';
 import 'package:chindi/routes/profile/user_profile.dart';
 import 'package:chindi/routes/tasks/tasks.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(length: 3, vsync: this);
     _tabController.addListener(_handleTabChange);
   }
 
@@ -44,6 +45,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           controller: _tabController,
           children: [
             Tasks(),
+            const ChatsList(),
             UserProfile(),
           ],
         ),
@@ -54,6 +56,11 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         tabs: const [
           Tab(
             icon: Icon(Icons.task_rounded),
+          ),
+          Tab(
+            icon: Icon(
+              Icons.chat_rounded,
+            ),
           ),
           Tab(
             icon: Icon(Icons.person_rounded),

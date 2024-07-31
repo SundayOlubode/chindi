@@ -8,14 +8,17 @@ import 'package:chindi/components/todo_lists/general_todo_list.dart';
 class TodoListWrapper extends StatelessWidget {
   final Task task;
   final User currentUser;
-  const TodoListWrapper(
-      {super.key, required this.task, required this.currentUser});
+  const TodoListWrapper({
+    super.key,
+    required this.task,
+    required this.currentUser,
+  });
 
   @override
   Widget build(BuildContext context) {
     if (task.assignedTo != null && currentUser.uid == task.assignedTo!.uid) {
       return TodoListForAssignee(task: task);
-    } else if (currentUser.uid == task.owner.uid) {
+    } else if (currentUser.uid == task.owner!.uid) {
       return TodoListForTaskOwner(task: task);
     } else {
       return GeneralTodoList(todoList: task.todoList);

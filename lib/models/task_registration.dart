@@ -1,32 +1,45 @@
-import 'package:chindi/models/task.dart';
 import 'package:chindi/models/user.dart';
+import 'package:chindi/services/firebase_firestore_service.dart';
 
 class TaskRegistration {
-  final String uid;
-  final Task task;
-  final User registrant;
+  final String taskId;
+  final String userId;
+  final User? user;
 
-  const TaskRegistration({
-    required this.uid,
-    required this.task,
-    required this.registrant,
+  TaskRegistration({
+    required this.taskId,
+    required this.userId,
+    this.user,
   });
 
-  factory TaskRegistration.fromMap(Map<String, dynamic> taskRegistration) {
+  factory TaskRegistration.fromMap(Map<String, dynamic> data) {
     return TaskRegistration(
-      uid: taskRegistration['uid'],
-      task: Task.fromMap(Map<String, dynamic>.from(taskRegistration['task'])),
-      registrant: User.fromMap(
-        Map<String, dynamic>.from(taskRegistration['registrant']),
-      ),
+      taskId: data['taskId'],
+      userId: data['userId'],
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'uid': uid,
-      'task': task.toMap(),
-      'registrant': registrant.toMap(),
+      'taskId': taskId,
+      'userId': userId,
     };
+  }
+
+  static Future<TaskRegistration> fromFirestore(
+    Map<String, dynamic> taskRegistrationData,
+  ) async {
+    var userMap = await FirebaseFirestoreService().getUserData(
+      taskRegistrationData['userId'],
+    );
+    var user = User.fromMap(
+      userMap,
+      taskRegistrationData['userId'],
+    );
+    return TaskRegistration(
+      taskId: taskRegistrationData['taskId'],
+      userId: taskRegistrationData['userId'],
+      user: user,
+    );
   }
 }

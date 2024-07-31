@@ -23,7 +23,7 @@ class TaskSummary extends StatelessWidget {
           MaterialPageRoute(
             builder: (BuildContext context) {
               return r.TaskDetails(
-                task: task,
+                taskId: task.uid!,
               );
             },
           ),
@@ -65,7 +65,7 @@ class TaskSummary extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              UserProfileSummary(user: task.owner),
+              UserProfileSummary(user: task.owner!),
             ],
           ),
         ),

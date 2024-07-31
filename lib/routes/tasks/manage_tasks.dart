@@ -23,10 +23,10 @@ class ManageTasks extends StatelessWidget {
           bottom: const TabBar(
             tabs: [
               Tab(
-                text: 'Tasks Created',
+                text: 'Tasks created',
               ),
               Tab(
-                text: 'Tasks Performed',
+                text: 'Tasks assigned',
               )
             ],
           ),
