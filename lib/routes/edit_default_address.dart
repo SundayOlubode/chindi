@@ -1,5 +1,6 @@
 import 'package:chindi/components/location_input.dart';
 import 'package:chindi/models/location.dart';
+import 'package:chindi/services/firebase_firestore_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:chindi/models/user.dart';
@@ -15,12 +16,13 @@ class EditDefaultAddress extends StatefulWidget {
 class _EditDefaultAddressState extends State<EditDefaultAddress> {
   @override
   Widget build(BuildContext context) {
+    FirebaseFirestoreService database = FirebaseFirestoreService();
     UserProvider userProvider = Provider.of<UserProvider>(context);
     User? user = userProvider.user!;
 
     // on save function
     void handleSave(Location location) {
-      userProvider.updateDefaultAddress(location);
+      database.updateUserAddress(location);
       Navigator.pop(context);
     }
 

@@ -24,7 +24,6 @@ class _MessageBoxState extends State<MessageBox> {
   Widget build(BuildContext context) {
     FirebaseFirestoreService database =
         Provider.of<FirebaseFirestoreService>(context);
-    User user = Provider.of<UserProvider>(context).user!;
 
     Future<void> sendMessage() async {
       if (_messageController.text.isEmpty) {
@@ -37,7 +36,7 @@ class _MessageBoxState extends State<MessageBox> {
       try {
         await database.sendMessage(Message(
           createdAt: DateTime.now(),
-          senderId: user.uid,
+          senderId: database.uid,
           receiverId: widget.chat.otherUserId,
           text: message,
         ));
