@@ -90,17 +90,17 @@ class FirebaseFirestoreService {
     });
   }
 
-  // Convert a snapshot to a list of Task models
+  /// Convert a snapshot to a list of Task models
   Future<List<Task>> _convertSnapshotToTasksList(QuerySnapshot snapshot) async {
     return await Future.wait(snapshot.docs.map(_convertSnapshotToTask));
   }
 
-  // Set user data in Firestore
+  /// Set user data in Firestore
   Future<void> setUserData(String uid, Map<String, dynamic> data) async {
     await _usersCollection.doc(uid).set(data);
   }
 
-  // Mark todo item as done
+  /// Mark todo item as done
   Future<void> changeTodoItemsDoneStatus(
       String taskId, int index, bool done) async {
     DocumentSnapshot doc = await _tasksCollection.doc(taskId).get();
@@ -113,21 +113,21 @@ class FirebaseFirestoreService {
     }
   }
 
-  // Get user data from Firestore
+  /// Get user data from Firestore
   Future<Map<String, dynamic>> getUserData(String uid) async {
     var doc = await _usersCollection.doc(uid).get();
     return doc.data() as Map<String, dynamic>;
   }
 
-  // Create a chat in Firestore
+  /// Create a chat in Firestore
   Future<void> createChat(Chat chat) async {
     String primaryUserId = uid;
     String secondaryUserId = chat.otherUserId;
 
-    // Generate a chat id
+    /// Generate a chat id
     final chatId = generateChatId(primaryUserId, secondaryUserId);
 
-    // Add the chat to both users' chat lists
+    /// Add the chat to both users' chat lists
     await FirebaseFirestore.instance
         .collection('users')
         .doc(primaryUserId)
@@ -142,7 +142,7 @@ class FirebaseFirestoreService {
     });
   }
 
-  // Checks if the chat exists in Firestore
+  /// Checks if the chat exists in Firestore
   Future<bool> checkIfChatExists(Chat chat) async {
     String primaryUserId = uid;
     String secondaryUserId = chat.otherUserId;
@@ -155,18 +155,18 @@ class FirebaseFirestoreService {
         user2Data['chatIds'].contains(chatId);
   }
 
-  // Update user details in Firestore
+  /// Update user details in Firestore
   Future<void> updateUserDetails(String uid, Map<String, dynamic> data) async {
     await _usersCollection.doc(uid).update(data);
   }
 
-  // Create a new task in Firestore
+  /// Create a new task in Firestore
   Future<void> createTask(Task task) async {
     final taskMap = task.toMap();
     await _tasksCollection.add(taskMap);
   }
 
-  // Register a user for a task in Firestore
+  /// Register a user for a task in Firestore
   Future<void> registerForTask(String taskId) async {
     await _taskRegistrationsCollection.add({
       'taskId': taskId,
@@ -183,7 +183,7 @@ class FirebaseFirestoreService {
     );
   }
 
-  // Get task registrations for a specific task
+  /// Get task registrations for a specific task
   Future<List<TaskRegistration>> getTaskRegistrationsForTask(
       String taskId) async {
     final snapshot = await _taskRegistrationsCollection
@@ -193,34 +193,34 @@ class FirebaseFirestoreService {
     return await Future.wait(snapshot.docs.map(_convertDocToTaskRegistration));
   }
 
-  // Get tasks performed by a user
+  /// Get tasks performed by a user
   Future<List<Task>> getTasksPerformedByUser(User user) async {
     final snapshot =
         await _tasksCollection.where('assignedToId', isEqualTo: user.uid).get();
     return _convertSnapshotToTasksList(snapshot);
   }
 
-  // Get tasks owned by a user
+  /// Get tasks owned by a user
   Future<List<Task>> getTasksOwnedByUser(User user) async {
     final snapshot =
         await _tasksCollection.where('ownerId', isEqualTo: user.uid).get();
     return _convertSnapshotToTasksList(snapshot);
   }
 
-  // Assign a task to a user
+  /// Assign a task to a user
   Future<void> assignTask(String taskId, String userId) async {
     await _tasksCollection.doc(taskId).update({
       'assignedToId': userId,
     });
   }
 
-  // Send a message in a chat
+  /// Send a message in a chat
   Future<void> sendMessage(Message message) async {
     final chatId = generateChatId(message.senderId, message.receiverId);
     await _p2pChats.collection(chatId).add(message.toMap());
   }
 
-  // Stream messages for a chat
+  /// Stream messages for a chat
   Stream<List<Message>> createMessageStreamForChat(
     Chat chat,
   ) {
@@ -243,7 +243,7 @@ class FirebaseFirestoreService {
     });
   }
 
-  // Generate a chat ID for two users
+  /// Generate a chat ID for two users
   String generateChatId(String primaryUserId, String secondaryUserId) {
     final uids = [primaryUserId, secondaryUserId]..sort();
     return uids.join('_');
