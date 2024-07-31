@@ -85,8 +85,4 @@ class FirebaseAuthService {
   Future<void> signOut() async {
     await _auth.signOut();
   }
-
-  Future<void> updateDisplayName(String displayName) async {
-    await _auth.currentUser!.updateDisplayName(displayName);
-  }
 }

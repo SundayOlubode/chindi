@@ -132,13 +132,13 @@ class FirebaseFirestoreService {
         .collection('users')
         .doc(primaryUserId)
         .update({
-      'chats': FieldValue.arrayUnion([chatId]),
+      'chatIds': FieldValue.arrayUnion([chatId]),
     });
     await FirebaseFirestore.instance
         .collection('users')
         .doc(secondaryUserId)
         .update({
-      'chats': FieldValue.arrayUnion([chatId]),
+      'chatIds': FieldValue.arrayUnion([chatId]),
     });
   }
 

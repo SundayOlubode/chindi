@@ -52,8 +52,9 @@ class UserProvider with ChangeNotifier {
       return;
     }
 
-    final userData =
-        await FirebaseFirestoreService().getUserData(firebaseUser.uid);
+    final userData = await FirebaseFirestoreService().getUserData(
+      firebaseUser.uid,
+    );
 
     _updateUserFromData(userData, firebaseUser.uid);
   }
