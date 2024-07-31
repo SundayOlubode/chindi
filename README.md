@@ -11,3 +11,8 @@ Chindi is a user-friendly application designed for busy individuals in Kenya, en
 - [Anesu Kafesu](https://github.com/anesukafesu)
 - [Nina Mwangi](https://github.com/NinaMwangi)
 - [S. Samuel Olubode](https://github.com/SundayOlubode)
+
+Description of criterion
+To test the application, we wrote unit tests that covered the application models, validators, helpers and utils. In our test cases, we took special care to include edge cases to increase confidence. We used the test package to cover all unit tests.
+We also conducted widget testing to ensure the widgets functioned as intended. For this, we used the flutter_test feature. This included testing user interaction, visual consistency, and responsiveness across different states. We also tested how everything worked together(integration testing) using the integration_test package built into the Flutter SDK.
+The application was tested across different devices with different screen sizes.
