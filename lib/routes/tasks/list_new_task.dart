@@ -57,10 +57,7 @@ class _ListNewTaskState extends State<ListNewTask> {
       User user = userProvider.user!;
 
       // Get database from database provider
-      FirebaseFirestoreService database = Provider.of<FirebaseFirestoreService>(
-        context,
-        listen: false,
-      );
+      FirebaseFirestoreService database = FirebaseFirestoreService();
 
       // Add the owner to the task details
       _taskDetails['ownerId'] = user.uid;

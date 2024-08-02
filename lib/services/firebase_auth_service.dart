@@ -1,4 +1,3 @@
-import 'package:chindi/services/firebase_firestore_service.dart';
 import 'package:chindi/utils/exceptions/custom_exception.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -10,8 +9,6 @@ class FirebaseAuthService {
     //   _auth.useAuthEmulator('localhost', 9099);
     // }
   }
-
-  FirebaseFirestoreService database = FirebaseFirestoreService();
 
   Stream<User?> get user {
     return _auth.authStateChanges();

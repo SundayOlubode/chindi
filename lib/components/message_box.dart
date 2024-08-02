@@ -22,8 +22,7 @@ class _MessageBoxState extends State<MessageBox> {
 
   @override
   Widget build(BuildContext context) {
-    FirebaseFirestoreService database =
-        Provider.of<FirebaseFirestoreService>(context);
+    FirebaseFirestoreService database = FirebaseFirestoreService();
     User user = Provider.of<UserProvider>(context).user!;
 
     Future<void> sendMessage() async {

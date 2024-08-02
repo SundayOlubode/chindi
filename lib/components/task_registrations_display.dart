@@ -28,73 +28,76 @@ class TaskRegistrationsDisplay extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: taskRegistrations.map((registration) {
-            return Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                UserProfileSummary(
-                  user: registration.user!,
-                ),
-                TextButton(
-                  onPressed: () async {
-                    AlertDialog confirmAssignmentDialog = AlertDialog(
-                      title: const Text('Confirm Assignment'),
-                      content: Text(
-                          'Are you sure you want to assign ${registration.user!.fullName}?'),
-                      actions: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(context, false);
-                          },
-                          child: const Text('Cancel'),
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(context, true);
-                          },
-                          child: const Text('Assign'),
-                        )
-                      ],
-                    );
-
-                    bool shouldAssign = await showDialog(
-                      context: context,
-                      builder: (context) {
-                        return confirmAssignmentDialog;
-                      },
-                    );
-
-                    if (shouldAssign) {
-                      if (!context.mounted) return;
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content:
-                              Text('Assigning ${registration.user!.fullName}.'),
-                        ),
+        if (taskRegistrations.isEmpty)
+          const Text('No one has registered for this task yet.'),
+        if (taskRegistrations.isNotEmpty)
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: taskRegistrations.map((registration) {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  UserProfileSummary(
+                    user: registration.user!,
+                  ),
+                  TextButton(
+                    onPressed: () async {
+                      AlertDialog confirmAssignmentDialog = AlertDialog(
+                        title: const Text('Confirm Assignment'),
+                        content: Text(
+                            'Are you sure you want to assign ${registration.user!.fullName}?'),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context, false);
+                            },
+                            child: const Text('Cancel'),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context, true);
+                            },
+                            child: const Text('Assign'),
+                          )
+                        ],
                       );
 
-                      await database.assignTask(
-                        taskId,
-                        registration.userId,
+                      bool shouldAssign = await showDialog(
+                        context: context,
+                        builder: (context) {
+                          return confirmAssignmentDialog;
+                        },
                       );
 
-                      if (!context.mounted) return;
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content:
-                              Text('Assigned ${registration.user!.fullName}.'),
-                        ),
-                      );
-                    }
-                  },
-                  child: const Text('Assign'),
-                ),
-              ],
-            );
-          }).toList(),
-        )
+                      if (shouldAssign) {
+                        if (!context.mounted) return;
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                                'Assigning ${registration.user!.fullName}.'),
+                          ),
+                        );
+
+                        await database.assignTask(
+                          taskId,
+                          registration.userId,
+                        );
+
+                        if (!context.mounted) return;
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                                'Assigned ${registration.user!.fullName}.'),
+                          ),
+                        );
+                      }
+                    },
+                    child: const Text('Assign'),
+                  ),
+                ],
+              );
+            }).toList(),
+          )
       ],
     );
   }

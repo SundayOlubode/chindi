@@ -12,8 +12,7 @@ class ManageTasks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     User user = Provider.of<UserProvider>(context).user!;
-    FirebaseFirestoreService db =
-        Provider.of<FirebaseFirestoreService>(context);
+    FirebaseFirestoreService db = FirebaseFirestoreService();
 
     return DefaultTabController(
       length: 2,

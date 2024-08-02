@@ -8,6 +8,7 @@ import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 
 class FirebaseFirestoreService {
   final String uid = firebase_auth.FirebaseAuth.instance.currentUser!.uid;
+
   final CollectionReference _usersCollection =
       FirebaseFirestore.instance.collection('users');
   final CollectionReference _tasksCollection =
@@ -85,6 +86,19 @@ class FirebaseFirestoreService {
   // Set user data in Firestore
   Future<void> setUserData(String uid, Map<String, dynamic> data) async {
     await _usersCollection.doc(uid).set(data);
+  }
+
+  // Mark todo item as done
+  Future<void> changeTodoItemsDoneStatus(
+      String taskId, int index, bool done) async {
+    DocumentSnapshot doc = await _tasksCollection.doc(taskId).get();
+
+    if (doc.exists) {
+      var todoList = doc.get('todoList');
+      todoList[index]['done'] = done;
+
+      await _tasksCollection.doc(taskId).update({'todoList': todoList});
+    }
   }
 
   // Get user data from Firestore

@@ -54,8 +54,7 @@ class _MessagesDisplayState extends State<MessagesDisplay> {
   @override
   Widget build(BuildContext context) {
     User currentUser = Provider.of<UserProvider>(context).user!;
-    FirebaseFirestoreService database =
-        Provider.of<FirebaseFirestoreService>(context);
+    FirebaseFirestoreService database = FirebaseFirestoreService();
     return Padding(
       padding: const EdgeInsets.all(10),
       child: StreamBuilder(

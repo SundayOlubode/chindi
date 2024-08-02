@@ -26,9 +26,6 @@ class App extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => UserProvider(),
         ),
-        Provider.value(
-          value: FirebaseFirestoreService(),
-        ),
       ],
       child: MaterialApp(
         title: 'Chindi',

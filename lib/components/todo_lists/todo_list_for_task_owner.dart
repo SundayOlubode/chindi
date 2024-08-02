@@ -27,38 +27,36 @@ class TodoListForTaskOwner extends StatelessWidget {
               .map((todoItemMap) => TodoItem.fromMap(todoItemMap))
               .toList();
 
-          return Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'To-do List',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 16,
-                  ),
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'To-do List',
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 16,
                 ),
-                const SizedBox(
-                  height: 5,
-                ),
-                ...todoList.map(
-                  (todoItem) {
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Checkbox(
-                          value: todoItem.done,
-                          onChanged: null,
-                        ),
-                        Text(
-                          todoItem.task,
-                        ),
-                      ],
-                    );
-                  },
-                ),
-              ],
-            ),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              ...todoList.map(
+                (todoItem) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Checkbox(
+                        value: todoItem.done,
+                        onChanged: null,
+                      ),
+                      Text(
+                        todoItem.task,
+                      ),
+                    ],
+                  );
+                },
+              ),
+            ],
           );
         });
   }

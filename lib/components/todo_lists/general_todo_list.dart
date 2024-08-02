@@ -7,40 +7,36 @@ class GeneralTodoList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            'To-do List',
-            style: TextStyle(
-              fontWeight: FontWeight.w700,
-              fontSize: 16,
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          'To-do List',
+          style: TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: 16,
           ),
-          const SizedBox(
-            height: 5,
-          ),
-          Expanded(
-            child: Column(
-              children: todoList.map(
-                (TodoItem todoItem) {
-                  return Row(
-                    children: [
-                      const Text(
-                        '\u2022 ',
-                      ),
-                      Text(
-                        todoItem.task,
-                      ),
-                    ],
-                  );
-                },
-              ).toList(),
-            ),
-          ),
-        ],
-      ),
+        ),
+        const SizedBox(
+          height: 5,
+        ),
+        Column(
+          children: todoList.map(
+            (TodoItem todoItem) {
+              return Row(
+                children: [
+                  const Text(
+                    '\u2022 ',
+                  ),
+                  Text(
+                    todoItem.task,
+                  ),
+                ],
+              );
+            },
+          ).toList(),
+        ),
+      ],
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:chindi/components/utils/custom_form.dart';
 import 'package:chindi/components/utils/custom_text_form_field.dart';
 import 'package:chindi/components/utils/primary_button.dart';
 import 'package:chindi/routes/auth/sign_in.dart';
+import 'package:chindi/routes/home.dart';
 import 'package:chindi/utils/constants/sizes.dart';
 import 'package:chindi/utils/constants/texts.dart';
 import 'package:chindi/utils/exceptions/custom_exception.dart';
@@ -10,6 +11,7 @@ import 'package:chindi/utils/validators/validate_email.dart';
 import 'package:chindi/utils/validators/validate_name.dart';
 import 'package:chindi/utils/validators/validate_password.dart';
 import 'package:chindi/providers/user_provider.dart';
+import 'package:chindi/wrapper.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
@@ -43,6 +45,14 @@ class _SignUpState extends State<SignUp> {
 
         try {
           await _userProvider.signUp(fullName, email, password);
+
+          if (context.mounted) {
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => const Wrapper()),
+              (route) => false,
+            );
+          }
         } on CustomException catch (e) {
           setState(() {
             _errorMessage = e.message;

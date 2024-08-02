@@ -1,5 +1,6 @@
 import 'package:chindi/components/todo_lists/todo_list_wrapper.dart';
 import 'package:chindi/components/user_profile_summary.dart';
+import 'package:chindi/components/utils/alert.dart';
 import 'package:chindi/models/chat.dart';
 import 'package:chindi/models/task_registration.dart';
 import 'package:chindi/providers/user_provider.dart';
@@ -73,11 +74,24 @@ class TaskDetails extends StatelessWidget {
         List<TaskRegistration> taskRegistrations =
             snapshot.data![1] as List<TaskRegistration>;
 
+        bool isTaskOwner = task.owner!.uid == user.uid;
+        bool isTaskAssigned = task.assignedTo != null;
+        bool isAlreadyRegistered = taskRegistrations.any(
+          (taskRegistration) => taskRegistration.userId == user.uid,
+        );
+
+        bool showRegistrationButton =
+            !isTaskOwner && !isTaskAssigned && !isAlreadyRegistered;
+
+        bool showRegistrations = isTaskOwner && !isTaskAssigned;
+
+        bool userIsAssignedToTask = task.assignedTo?.uid == user.uid;
+
         return Scaffold(
           appBar: AppBar(
             title: const Text('Task Details'),
           ),
-          floatingActionButton: task.owner!.uid != user.uid
+          floatingActionButton: showRegistrationButton
               ? FloatingActionButton.extended(
                   backgroundColor: Theme.of(context).primaryColor,
                   onPressed: registerForTask,
@@ -87,112 +101,133 @@ class TaskDetails extends StatelessWidget {
                   ),
                 )
               : null,
-          body: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  task.title,
-                  style: TextStyles.headingStyle,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text('Posted by:'),
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    task.title,
+                    style: TextStyles.headingStyle,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text('Posted by:'),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          UserProfileSummary(user: task.owner!),
+                          if (task.ownerId != user.uid)
+                            TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ChatDisplay(
+                                      chat: Chat(
+                                        uid: database.generateChatId(
+                                          user.uid,
+                                          task.ownerId,
+                                        ),
+                                        label: task.owner!.fullName,
+                                        otherUserId: task.ownerId,
+                                        otherUserAvatarUrl:
+                                            task.owner!.avatarUrl,
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
+                              child: const Text(
+                                'Send Message',
+                                style: TextStyle(fontWeight: FontWeight.w600),
+                              ),
+                            )
+                        ],
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    task.description,
+                    style: TextStyles.bodyStyle,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'Location: ${createLocationDescription(task.location)}',
+                    style: TextStyles.subduedTextStyle,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    formatCurrency(task.pay),
+                    style: TextStyles.currencyStyle,
+                  ),
+                  // Displayed only if the user is the task owner and the task is not assigned to anyone
+                  if (showRegistrations) ...[
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    TaskRegistrationsDisplay(
+                      taskRegistrations: taskRegistrations,
+                      taskId: task.uid!,
+                    ),
+                  ],
+
+                  // Displayed only if user is the task owner and the task has been assigned to someone
+                  if (isTaskOwner && isTaskAssigned) ...[
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const Text(
+                      'Assigned to:',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
                     const SizedBox(
                       height: 10,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        UserProfileSummary(user: task.owner!),
-                        if (task.ownerId != user.uid)
-                          TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ChatDisplay(
-                                    chat: Chat(
-                                      uid: database.generateChatId(
-                                        user.uid,
-                                        task.ownerId,
-                                      ),
-                                      label: task.owner!.fullName,
-                                      otherUserId: task.ownerId,
-                                      otherUserAvatarUrl: task.owner!.avatarUrl,
-                                    ),
-                                  ),
-                                ),
-                              );
-                            },
-                            child: const Text(
-                              'Send Message',
-                              style: TextStyle(fontWeight: FontWeight.w600),
-                            ),
-                          )
-                      ],
-                    ),
+                    UserProfileSummary(user: task.assignedTo!),
                   ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  task.description,
-                  style: TextStyles.bodyStyle,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  'Location: ${createLocationDescription(task.location)}',
-                  style: TextStyles.subduedTextStyle,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  formatCurrency(task.pay),
-                  style: TextStyles.currencyStyle,
-                ),
-                // Displayed only if the user is the task owner and the task is not assigned to anyone
-                if (user.uid == task.owner!.uid && task.assignedTo == null) ...[
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  TaskRegistrationsDisplay(
-                    taskRegistrations: taskRegistrations,
-                    taskId: task.uid!,
-                  ),
-                ],
 
-                // Displayed only if user is the task owner and the task has been assigned to someone
-                if (user.uid == task.owner!.uid && task.assignedTo != null) ...[
-                  const Text(
-                    'Assigned to:',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
+                  if (isAlreadyRegistered && !isTaskAssigned) ...[
+                    const SizedBox(
+                      height: 20,
                     ),
-                  ),
+                    const Alert(
+                        text: 'You have already registered for this task'),
+                  ],
+
+                  if (userIsAssignedToTask) ...[
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const Alert(text: 'You have been assigned to this task'),
+                  ],
                   const SizedBox(
-                    height: 10,
+                    height: 20,
                   ),
-                  UserProfileSummary(user: task.assignedTo!),
+                  TodoListWrapper(
+                    task: task,
+                    currentUser: user,
+                  ),
                 ],
-                const SizedBox(
-                  height: 20,
-                ),
-                TodoListWrapper(
-                  task: task,
-                  currentUser: user,
-                ),
-              ],
+              ),
             ),
           ),
         );

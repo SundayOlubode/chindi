@@ -4,7 +4,6 @@ import 'package:chindi/components/user_avatar.dart';
 import 'package:chindi/models/chat.dart';
 import 'package:chindi/services/firebase_firestore_service.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class ChatDisplay extends StatelessWidget {
   final Chat chat;
@@ -16,8 +15,7 @@ class ChatDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FirebaseFirestoreService database =
-        Provider.of<FirebaseFirestoreService>(context);
+    FirebaseFirestoreService database = FirebaseFirestoreService();
 
     Future<bool> prepareChat() async {
       bool chatExists = await database.checkIfChatExists(

@@ -7,7 +7,6 @@ import 'package:chindi/models/user.dart' as m;
 
 class UserProvider with ChangeNotifier {
   final FirebaseAuthService _authService = FirebaseAuthService();
-  final FirebaseFirestoreService _databaseService = FirebaseFirestoreService();
 
   m.User? _user;
   m.User? get user => _user;
@@ -29,7 +28,7 @@ class UserProvider with ChangeNotifier {
     final Map<String, dynamic> initialData =
         _createInitialUserData(fullName, email);
 
-    await _databaseService.setUserData(user.uid, initialData);
+    await FirebaseFirestoreService().setUserData(user.uid, initialData);
     _updateUserFromData(initialData, user.uid);
   }
 
@@ -40,7 +39,8 @@ class UserProvider with ChangeNotifier {
   Future<void> updateDefaultAddress(Location address) async {
     final Map<String, dynamic> updatedProperties = {'address': address.toMap()};
 
-    await _databaseService.updateUserDetails(_user!.uid, updatedProperties);
+    await FirebaseFirestoreService()
+        .updateUserDetails(_user!.uid, updatedProperties);
     _user!.address = address;
     notifyListeners();
   }
@@ -52,13 +52,10 @@ class UserProvider with ChangeNotifier {
       return;
     }
 
-    final userData = await _databaseService.getUserData(firebaseUser.uid);
-    if (userData == null) {
-      // TODO: Handle the case where the user data is null
-      return;
-    }
+    final userData =
+        await FirebaseFirestoreService().getUserData(firebaseUser.uid);
 
-    _updateUserFromData(userData as Map<String, dynamic>, firebaseUser.uid);
+    _updateUserFromData(userData, firebaseUser.uid);
   }
 
   Map<String, dynamic> _createInitialUserData(String fullName, String email) {
@@ -66,6 +63,7 @@ class UserProvider with ChangeNotifier {
       'email': email,
       'fullName': fullName,
       'avatarUrl': '',
+      'chatIds': [],
       'address': {
         'streetAddress': '',
         'suburb': '',
