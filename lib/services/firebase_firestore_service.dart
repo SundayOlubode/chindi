@@ -1,4 +1,5 @@
 import 'package:chindi/models/chat.dart';
+import 'package:chindi/models/location.dart';
 import 'package:chindi/models/message.dart';
 import 'package:chindi/models/task.dart';
 import 'package:chindi/models/task_registration.dart';
@@ -7,6 +8,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 
 class FirebaseFirestoreService {
+  // Implementing singleton pattern for Database service
+  static final instance = FirebaseFirestoreService._privateConstructor();
+  factory FirebaseFirestoreService() => instance;
+  FirebaseFirestoreService._privateConstructor();
+
   final String uid = firebase_auth.FirebaseAuth.instance.currentUser!.uid;
 
   final CollectionReference _usersCollection =
@@ -76,6 +82,12 @@ class FirebaseFirestoreService {
   Future<String> getAvatarUrl(String uid) async {
     var doc = await _usersCollection.doc(uid).get();
     return (doc.data() as Map<String, dynamic>)['avatarUrl'];
+  }
+
+  Future<void> updateUserAddress(Location address) async {
+    await _usersCollection.doc(uid).update({
+      'address': address.toMap(),
+    });
   }
 
   // Convert a snapshot to a list of Task models

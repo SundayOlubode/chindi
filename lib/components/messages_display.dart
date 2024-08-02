@@ -53,7 +53,6 @@ class _MessagesDisplayState extends State<MessagesDisplay> {
 
   @override
   Widget build(BuildContext context) {
-    User currentUser = Provider.of<UserProvider>(context).user!;
     FirebaseFirestoreService database = FirebaseFirestoreService();
     return Padding(
       padding: const EdgeInsets.all(10),
@@ -87,12 +86,10 @@ class _MessagesDisplayState extends State<MessagesDisplay> {
                 Message message = messages[index];
                 return MessageBubble(
                   message: message,
-                  primaryUser: currentUser,
                 );
               },
             );
           } else if (snapshot.hasError) {
-            print(snapshot.error);
             return const Center(
               child: Text('An error occurred'),
             );

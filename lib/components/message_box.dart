@@ -1,10 +1,7 @@
 import 'package:chindi/models/chat.dart';
 import 'package:chindi/models/message.dart';
-import 'package:chindi/models/user.dart';
-import 'package:chindi/providers/user_provider.dart';
 import 'package:chindi/services/firebase_firestore_service.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class MessageBox extends StatefulWidget {
   final Chat chat;
@@ -23,7 +20,6 @@ class _MessageBoxState extends State<MessageBox> {
   @override
   Widget build(BuildContext context) {
     FirebaseFirestoreService database = FirebaseFirestoreService();
-    User user = Provider.of<UserProvider>(context).user!;
 
     Future<void> sendMessage() async {
       if (_messageController.text.isEmpty) {
@@ -36,7 +32,7 @@ class _MessageBoxState extends State<MessageBox> {
       try {
         await database.sendMessage(Message(
           createdAt: DateTime.now(),
-          senderId: user.uid,
+          senderId: database.uid,
           receiverId: widget.chat.otherUserId,
           text: message,
         ));

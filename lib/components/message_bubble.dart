@@ -1,21 +1,20 @@
 import 'package:chindi/models/message.dart';
-import 'package:chindi/models/user.dart';
+import 'package:chindi/services/firebase_firestore_service.dart';
 import 'package:chindi/utils/helpers/create_time_description.dart';
 import 'package:flutter/material.dart';
 
 class MessageBubble extends StatelessWidget {
   final Message message;
-  final User primaryUser;
 
   const MessageBubble({
     super.key,
     required this.message,
-    required this.primaryUser,
   });
 
   @override
   Widget build(BuildContext context) {
-    bool isOwnMessage = message.senderId == primaryUser.uid;
+    FirebaseFirestoreService database = FirebaseFirestoreService();
+    bool isOwnMessage = message.senderId == database.uid;
     double borderRadius = 20;
     MainAxisAlignment messageBubbleAlignment =
         isOwnMessage ? MainAxisAlignment.end : MainAxisAlignment.start;
