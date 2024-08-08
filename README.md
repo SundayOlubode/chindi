@@ -4,11 +4,15 @@ Chindi is a user-friendly application designed for busy individuals in Kenya, en
 
 # Summative Demo Video
 
-- [Chindi Summative Group Demo Video](https://drive.google.com/file/d/18pxvQ1MsSYZh-fNQFVLRtTw9ISmTzzvJ/view?usp=sharing)
+- [Chindi Summative Group Demo Video](https://drive.google.com/file/d/1AVb4LOvQ3DKhwZyCit4KPxmQWtng3Bg4/view)
 
 # App Demo Video
 
 - [Chindi App Demo](https://drive.google.com/file/d/1abBt_B1kWzED5qFe2DTUGQy-eYRgMEGe/view?usp=sharing)
+
+# Apk file
+
+[Apk Download](app-release.apk)
 
 # Authors
 
